@@ -19,7 +19,7 @@ export default {
         },
         {
           icon: 'fa-location-dot',
-          text: 'Chemin Colladon 1209 Genève',
+          text: 'Chemin Colladon 34, 1209 Genève',
           link: 'https://rb.gy/2ua5cv'
         }
       ]
@@ -35,8 +35,8 @@ export default {
 
 
    
-   <div class="row g-3">
-     <div class="col-md-4" v-for="info in contacts">
+   <div class="row g-3 ">
+     <div class="col-md-6 col-lg-4" v-for="info in contacts">
        <card>
          <template v-slot:body>
            <div class="vstack gap-3 text-center justify-content-center align-items-center">
@@ -50,7 +50,7 @@ export default {
 
 
 
-   <div class="row">
+   <div class="row justify-content-center align-items-center">
      <div class="col-md-6">
        <form action="" class="my-5">
 

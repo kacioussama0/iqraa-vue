@@ -4,6 +4,9 @@ import Gallery from "@/components/Gallery.vue";
 import Contact from "@/components/Contact.vue";
 import Faq from "@/components/Faq.vue";
 import Activities from "@/components/Activities.vue";
+import Posts from "@/components/Posts.vue";
+import Post from "@/components/Post.vue";
+import Photos from "@/components/Photos.vue";
 
 const routes = [
     {
@@ -30,6 +33,21 @@ const routes = [
         name: 'activities',
         path: '/activities',
         component: Activities
+    },
+    {
+        name: 'posts',
+        path: '/posts',
+        component: Posts
+    },
+    {
+        name: 'post',
+        path: '/post',
+        component: Post
+    },
+    {
+        name: 'photos',
+        path: '/photos',
+        component: Photos
     },
 
 ]

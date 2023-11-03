@@ -46,7 +46,8 @@ export default  {
 <template>
 
   <!--        Start Navbar    -->
-  <nav class="navbar navbar-expand-lg py-3">
+
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
       <a class="navbar-brand fw-bolder" href="#" >
         <img src="/logo-colored.svg" alt="" style="width: 120px">
@@ -56,11 +57,9 @@ export default  {
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent" >
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item" v-for="item in listItem" >
+          <li :class="`nav-item`" v-for="item in listItem" >
             <router-link :to="item.link" class="nav-link active fw-bold"  aria-current="page">{{$t(item.name)}}</router-link>
           </li>
-
-
         </ul>
 
         <!--        Start Social Media    -->
@@ -94,7 +93,7 @@ nav ul li {
 
 }
 
-nav ul li::before {
+nav ul li::before, nav ul li.active::before {
   content: '';
   width: 100%;
   height: 4px;
@@ -111,7 +110,7 @@ nav ul li a {
 }
 
 
-nav ul li:hover::before {
+nav ul li:hover::before , nav ul li.active::before{
   opacity: 1;
 }
 
@@ -141,6 +140,10 @@ nav div.social-media a {
 
 .navbar-toggler {
   border: none !important;
+}
+
+li:first-child a {
+  color: var(--bs-danger) !important;
 }
 
 </style>

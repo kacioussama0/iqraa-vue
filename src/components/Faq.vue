@@ -6,7 +6,7 @@ export default {
 
 <template>
 
- <div class="container">
+ <div class="container my-5">
    <h1 class="text-center my-5">أسئلة شائعة</h1>
 
    <div class="accordion" id="accordionExample">

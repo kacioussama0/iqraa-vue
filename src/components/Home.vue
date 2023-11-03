@@ -8,54 +8,23 @@ export default {
   data() {
     return {
       statistics: [
-        {name: 'طالب' , goal: 634 , icon: 'fa-graduation-cap'},
-        {name: 'فصل' , goal: 30 , icon: 'fa-school'},
-        {name: 'قاعة تدريس' , goal: 10 , icon: 'fa-screen-users'},
-        {name: 'مدرس' , goal: 20 , icon: 'fa-chalkboard-teacher'},
+        {name: 'طالب' , goal: 1139 , icon: 'fa-graduation-cap'},
+        {name: 'قاعة تدريس' , goal: 14 , icon: 'fa-screen-users'},
+        {name: 'مدرس' , goal: 28 , icon: 'fa-chalkboard-teacher'},
       ],
 
       modules: [
-        {name: 'اللغة العربية' , icon: 'fa-language'},
-        {name: 'منهاج إقرأ و ارتق' , icon: 'fa-stairs'},
-        {name: 'القرآن الكريم' , icon: 'fa-book-quran'},
-        {name: 'التربية الاسلامية' , icon: 'fa-mosque'},
-        {name: 'الاناشيد' , icon: 'fa-music'},
-        {name: 'القراءة' , icon: 'fa-book-open-reader'},
-        {name: 'المحادثة والتعبير .' , icon: 'fa-comments'},
+        {name: 'اللغة العربية' , icon: 'fa-language', color: "danger"},
+        {name: 'التربية الاسلامية' , icon: 'fa-mosque', color: "primary"},
+        {name: 'القرآن الكريم' , icon: 'fa-book-quran', color: "primary"},
+        {name: 'القراءة' , icon: 'fa-book-open-reader', color: "danger"},
+        {name: 'المحادثة والتعبير .' , icon: 'fa-comments', color: "danger"},
+        {name: 'منهاج إقرأ و ارتق' , icon: 'fa-stairs', color: "primary"},
       ],
       countries: ['iq','sy','lb','jo','ps','ye','sd','eg','ly','tn','dz','ma','mr','pk','af','tr','al','xk','ng','sn','gn','so','er','bd','ba','in','cn','br','fr','ch','sa','es','it','km','mk'],
     }
   },
 
-  beforeMount() {
-
-    let nums = document.querySelectorAll(".statistics .number");
-
-    let statsSection = document.querySelector(".statistics");
-    let started = false; // Function Started ? No
-
-
-    window.onscroll = function () {
-
-      // Stats Increase Number
-      if (window.scrollY >= statsSection.offsetTop - 400) {
-        if (!started) {
-          nums.forEach((num) => startCount(num));
-        }
-        started = true;
-      }
-    };
-
-    function startCount(el) {
-      let goal = el.dataset.goal;
-      let count = setInterval(() => {
-        el.textContent++;
-        if (el.textContent == goal) {
-          clearInterval(count);
-        }
-      }, 2000 / goal);
-    }
-  }
 
 }
 
@@ -68,53 +37,28 @@ export default {
 
   <!--    Start Landing Page  -->
 
-  <section class="landing-page py-5 my-3">
+  <section class="landing-page py-5 mb-3">
 
 
     <div class="container">
 
-
       <div class="row align-items-center">
 
-
-
-        <div class="col-lg-6  p-5 rounded-3 vstack gap-3 justify-content-center align-items-start text-center text-lg-start">
+        <div class="col-lg-6 p-5 rounded-3 vstack gap-3 justify-content-center align-items-lg-start align-items-center">
           <h2 class="fw-bolder"><i class="fa-duotone fa-hand-wave fa-1x"></i>{{$t('Welcome')}}</h2>
-          <h1 class="display-3 fw-bold text-success">{{$t('School')}}</h1>
-          <p class="lh-lg text-muted"> مدرسة جنيف العربية مدرسة متميزة في حماية الهوية الإسلامية لأبناء الجالية، وجعلهم نافعـين لذاتهم ومجتمعهم، بما يجعلها نموذجا للمدارس العربية في اوروبا.</p>
-          <button  class="btn btn-primary d-block btn-lg px-5">
+          <h1 class="display-3 fw-bold text-danger">{{$t('School')}}</h1>
+          <p class="lh-lg text-muted text-lg-start text-center"> أن نكون مدرسة متميزة في تثقيف وحماية الهوية الإسلامية لأبنائنا. وأن نكون نموذجاً يحتذى به للمدارس العربية في أوروبا.</p>
+            <router-link to="/contact"  class="btn btn-primary d-block btn-lg px-5">
             <i class="fa-duotone fa-school me-2"></i>
             تعرف علينا
-          </button>
+          </router-link>
         </div>
 
-
-        <div class="col-lg-6 landing-imgs">
-          <div class="row gap-md-5 text-center">
-
-            <div class="col-sm-6 col-md-5">
-              <img src="../assets/imgs/landing-1.jpg" alt="" class="rounded-5">
-            </div>
-
-            <div class="col-sm-6 col-md-5">
-              <img src="../assets/imgs/landing-2.jpg" alt="" class="rounded-circle">
-            </div>
-
-            <div class="col-sm-6 col-md-5">
-              <img src="../assets/imgs/landing-3.jpg" alt="" class="rounded-start-pill">
-            </div>
-
-            <div class="col-sm-6 col-md-5">
-              <img src="../assets/imgs/landing-4.jpg" alt="" class="rounded-end-5">
-            </div>
-
-          </div>
+        <div class="col-12 col-lg-6">
+              <img src="../assets/imgs/landing.png" alt="" class="rounded-5 img-fluid w-100 h-100">
         </div>
-
 
       </div>
-
-
 
     </div>
 
@@ -124,46 +68,23 @@ export default {
   <!--    End Landing Page  -->
 
 
-  <!--    Start Statistics -->
-
-  <section class="statistics text-bg-primary py-5 mb-5" >
-
-
-    <div class="container">
-
-      <div class="row g-5">
-
-        <div class="col-md-3 vstack gap-3 justify-content-center align-items-center" v-for="item in statistics">
-          <i :class="`fa-duotone ${item.icon} fa-4x`"></i>
-          <h4 class="fw-bold">+<span :data-goal="item.goal" class="number">{{ item.goal }} </span> {{item.name}}</h4>
-        </div>
-
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!--    End Statistics -->
-
   <!--    Start Our Modules -->
 
   <section class="our-modules">
 
     <div class="container">
 
-      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">المواد التي ندرسها</span> <br>في مختلف الفصول الدراسية</h4>
+      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">المواد التي ندرسها</span></h4>
 
       <!-- Start Cards  -->
 
-      <div class="row my-5 g-5 justify-content-center align-items-center">
+      <div class="row my-5 g-5  align-items-center">
 
-        <div class="col-sm-6 col-md-4 col-lg-3" v-for="module in modules">
-          <card class="vstack gap-3 justify-content-center align-items-center">
+        <div class="col-sm-6 col-md-4" v-for="module in modules">
+          <card class="vstack gap-3 justify-content-center align-items-center  text-center">
             <template v-slot:body class="">
-              <i :class="`fa-duotone ${module.icon}  fa-5x text-success mb-3`"></i>
-              <h5 class="fw-bolder text-center">{{module.name}}</h5>
+              <i :class="`fa-duotone ${module.icon}  fa-3x text-${module.color} mb-3`"></i>
+              <h5 class="fw-bolder">{{module.name}}</h5>
             </template>
           </card>
 
@@ -179,6 +100,29 @@ export default {
 
   <!--    End Our Modules -->
 
+  <!--    Start Statistics -->
+
+  <section class="statistics  py-5 mb-5 w-100">
+
+    <div class="container">
+
+      <div class="row g-5">
+
+        <div class="col-sm-6 col-md-3 vstack gap-3 justify-content-center align-items-center text-light" v-for="item in statistics">
+          <i :class="`fa-duotone ${item.icon} fa-4x`"></i>
+          <h4 class="fw-bold"> + <span :data-goal="item.goal" class="number">{{ item.goal }} </span> {{item.name}}</h4>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!--    End Statistics -->
+
+
   <!--    Start Our Features -->
 
   <section class="our-features  z-n1 position-relative py-5">
@@ -186,8 +130,7 @@ export default {
 
     <div class="container">
 
-
-      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">خصائص مدرستنا</span></h4>
+      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">أهداف مدرستنا</span></h4>
 
       <div class="row align-items-center">
 
@@ -196,22 +139,24 @@ export default {
           <div class="row">
 
             <div class="col-md-6 ">
-              <ul class="list-unstyled vstack gap-2">
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>الاسهام في بناء شخصية المنتسب الى مدرستنا بناءً تربوياً سليماً ومتكاملا.</li>
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>تعميق معاني العقيدة الإسلامية الصحيحة</li>
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>التعريف بشخصية النبي صلى الله عليه وسلم وحبه</li>
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>التعريف ببعض محطات السيرة النبوية المختارة، وكيف يستثمرها في حياته اليومية</li>
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>اكساب ثقافة إسلامية دينية صحيحة -الأنبياء، الرسالات السماوية...</li>
+              <ul class="list-unstyled vstack gap-3">
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعزيز تطوير شخصية الفرد المنتسب إلى مدرستنا بناءً تربويًا سليمًا وشاملًا</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعزيز الفهم الصحيح للإسلام والتطبيق الصحيح للعقيدة الإسلامية وتعميق معانيها.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعريف ابناءنا بشخصية النبي محمد صلى الله عليه وسلم وتعزيز حبه في قلوبهم.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعريف ابناءنا بمحطات مختارة في السيرة النبوية وتعليمهم كيفية الاستفادة منها في حياتهم اليومية.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>اكساب ابناءنا الثقافة الإسلامية الصحيحة من خلال دراسة سير الأنبياء والرسل والرسائل السماوية.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعزيز قيمة اللغة العربية وأهميتها في حياة المتعلم وحضارته كفرد مسلم.</li>
               </ul>
             </div>
             <div class="col-md-6">
-              <ul class="list-unstyled vstack gap-2">
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>التعريف باركان الإسلام اجمالا</li>
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>تنمية القدرة على استعمال القواميس والمراجع باللغة العربية</li>
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>تنمية القدرة على الاصغاء والتحدث والقراءة والكتابة بلغة عربية بشكل صحيح، والتفاعل مع ما يقرأ.</li>
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>حفظ بعض السور القرآنية المختارة (حوالي 05 احزاب)</li>
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>حفظ بعض الأحاديث المناسبة (الأربعين النووية)</li>
-                <li><i class="fa-duotone fa-badge-check text-primary me-2"></i>تقدير قيمة اللغة واهميتها في حياة المتعلم وحضارته كفرد مسلم نطق الحروف بشكل صحيح، والتعريف ب الرسم العثماني.</li>
+              <ul class="list-unstyled vstack gap-3">
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعريف ابناءنا بأركان الإسلام وأهميتها في الحياة اليومية.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تنمية القدرة على استخدام القواميس والمراجع باللغة العربية بفعالية.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعزيز القيم الأخلاقية والآداب والفضائل الإسلامية، مع تعزيز قيم المواطنة والمشاركة في المجتمع.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تطوير مهارات الاستماع والتحدث والقراءة والكتابة باللغة العربية بشكل صحيح، وتشجيع التفاعل مع المواد المقروءة.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>حفظ بعض السور القرآنية المختارة (حوالي 5 أحزاب).</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>حفظ بعض الأحاديث المناسبة من الأربعين النووية.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعليم النطق الصحيح للحروف العربية والتعريف بالرسم العثماني للحروف.</li>
               </ul>
             </div>
 
@@ -224,9 +169,7 @@ export default {
 
       </div>
 
-
     </div>
-
 
   </section>
 
@@ -234,42 +177,49 @@ export default {
   <!--    End Our Features -->
 
 
-
   <section class="properties py-5">
 
     <div class="container">
 
-      <div class="row">
+          <div class="row g-5 mb-5">
 
-        <div class="col-xl-6">
+            <div class="col-md-6">
+              <img src="../assets/imgs/proprties.jpg" alt="" class="img-fluid rounded-5">
+            </div>
 
-          <h4 class="lh-lg fw-normal mb-5"><span class="heading-shape fw-bolder">أعمار التلاميذ</span></h4>
+            <div class="col-md-6">
+              <div class="ages">
+                <h4 class="lh-lg fw-normal mb-3"><span class="heading-shape fw-bolder">أعمار التلاميذ</span></h4>
+                <p>تتراوح أعمار التلاميذ من 4 سنوات وحتى17 سنة </p>
+              </div>
 
-          <p>تتراوح أعمار التلاميذ من 4 سنوات وحتى17 سنة </p>
-          <img src="../assets/imgs/proprties.svg" alt="" class="img-fluid">
-
-        </div>
-
-
-        <div class="col-xl-6">
-
-
-          <h4 class="lh-lg fw-normal mb-5"><span class="heading-shape fw-bolder"> جنسيات التلاميذ</span></h4>
-          <p>وتتضمن التلاميذ بدول إسلامية وغير إسلامية</p>
-
-            <div class="row g-3">
-
-              <div class="col-4 col-sm-3 col-md-2" v-for="country in countries">
-                  <div :class="`fi fi-${country}`"></div>
+              <div class="levels">
+                <h4 class="lh-lg fw-normal mb-3"><span class="heading-shape fw-bolder">المستويات</span></h4>
+                <ul class="vstack gap-2">
+                  <li v-for="count in 10">المستوى {{count}} </li>
+                </ul>
               </div>
 
             </div>
 
+          </div>
+
+          <section>
+
+            <h4 class="lh-lg fw-normal"><span class="heading-shape fw-bolder">جنسيات التلاميذ</span></h4>
+            <p>مدرستنا تضم تلاميذ من 35 جنسية مختلفة.</p>
+
+            <div class="row g-3 mt-4">
+              <div class="col-4 col-sm-3 col-md-1" v-for="country in countries">
+                <div :class="`fi fi-${country}`" ></div>
+              </div>
+            </div>
+
+          </section>
+
         </div>
 
-      </div>
 
-    </div>
 
   </section>
 
@@ -289,13 +239,13 @@ export default {
         <div class="col-md-6 col-lg-4" v-for="i in 6">
           <card class="text-center">
             <template v-slot:header>
-              <img src="https://mkte.tech/assets/imgs/landing-1.jpg" class="card-img-top" alt="...">
+              <img src="../assets/imgs/landing-2.jpg" class="card-img-top" alt="...">
             </template>
             <template v-slot:body class="vstack gap-2 ">
               <h5 class="card-title text-center">مقال عن مماراسات المدرسة</h5>
               <p class="card-text text-muted">تعد الرحلات المدرسية طريقة من طرق التعليم التي تعتمد على التشويق والتجربة والبحث والاستكشاف وتمتلك في طياتها نوعاً من أنواع الترفيه ...</p>
               <span> <i class="fa-duotone fa-calendar text-primary me-2"></i>تاريخ النشر :  07/05/2023  </span>
-              <a href="#" class="btn btn-outline-success fw-bold stretched-link d-block my-2">إقرأ المزيد</a>
+              <a href="#" class="btn btn-primary fw-bold stretched-link d-block my-2">إقرأ المزيد</a>
             </template>
           </card>
 
@@ -319,7 +269,7 @@ export default {
     <div class="container">
 
 
-      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">ماذا قالو عنا</span></h4>
+      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">قالو عنا</span></h4>
 
       <div id="carouselExampleIndicators" class="carousel slide rounded-4 mx-auto w-50" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -379,7 +329,7 @@ export default {
 
 
 .statistics {
-  height: 500px;
+  min-height: 500px;
   background-image: url("../assets/imgs/landing-4.jpg");
   background-size: cover;
   background-position: center;
@@ -397,7 +347,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: var(--bs-primary);
+  background-color: var(--bs-secondary);
   opacity: 0.9;
   z-index: -1;
 }
@@ -407,7 +357,7 @@ export default {
 
 
 .landing-page {
-  background-image: url("../imgs/Shape Hero.svg");
+  background-image: url("../assets/imgs/Shape Hero.svg");
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -431,7 +381,7 @@ export default {
 /* Start Our Modules */
 
 .our-modules {
-  background-image: url("../imgs/Shape Hero.svg");
+  background-image: url("../assets/imgs/Shape Hero.svg");
   background-repeat: no-repeat;
   background-position: right center;
 }
@@ -459,20 +409,6 @@ export default {
 }
 
 
-.posts div.card {
-  cursor: pointer;
-  transition: 0.6s;
-}
-
-.posts div.card:hover  {
-  transform: rotate(1deg);
-}
-
-
-.posts a {
-  bottom: -20px !important;
-}
-
 /* End Posts */
 
 
@@ -480,13 +416,13 @@ export default {
 
 .testimonials .carousel-indicators {
 
-  bottom: -50px !important;
+  bottom: -30px !important;
 }
 
 .testimonials .carousel-indicators button {
   background: var(--bs-primary) !important;
-  width: 15px !important;
-  border-radius: 50%;
+
+  border-radius: 10px;
 }
 
 

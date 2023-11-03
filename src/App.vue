@@ -1,17 +1,21 @@
 <template>
 
 
-  <up-bar/>
+    <up-bar/>
 
   <!--    Start Header    -->
-  <header>
-    <nav-bar/>
+  <header >
+    <nav-bar />
   </header>
   <!--        End Header    -->
+
+  <!--  Start Main  -->
 
   <main>
       <router-view/>
   </main>
+
+  <!--  End Main  -->
 
   <Footer/>
 
@@ -39,6 +43,7 @@ export  default  {
 
 body {
   font-family: 'ExpoArabic', sans-serif !important;
+
 }
 
 .heading-shape {

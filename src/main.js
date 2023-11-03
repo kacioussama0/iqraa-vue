@@ -1,4 +1,4 @@
-import "./assets/css/bootstrap.rtl.css";
+import "./assets/css/bootstrap.rtl.min.css";
 import "./assets/js/bootstrap.bundle.min.js";
 import "./assets/css/fontawesome/css/all.min.css";
 import "./assets/css/fontawesome/js/all.min.js";

@@ -19,6 +19,7 @@ export default {
         <card>
           <template v-slot:header class="">
             <img src="../assets/imgs/landing-4.jpg" alt="" class="img-fluid">
+            <router-link to="/photos" class="stretched-link"  ></router-link>
           </template>
 
           <template v-slot:footer>
@@ -31,6 +32,7 @@ export default {
         <card>
           <template v-slot:header class="">
             <img src="../assets/imgs/landing-4.jpg" alt="" class="img-fluid">
+            <router-link to="/photos" class="stretched-link"  ></router-link>
           </template>
 
           <template v-slot:footer>
@@ -43,6 +45,7 @@ export default {
         <card>
           <template v-slot:header class="">
             <img src="../assets/imgs/landing-4.jpg" alt="" class="img-fluid">
+            <router-link to="/photos" class="stretched-link"  ></router-link>
           </template>
 
           <template v-slot:footer>

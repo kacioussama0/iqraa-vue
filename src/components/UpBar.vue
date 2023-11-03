@@ -9,7 +9,7 @@ export default defineComponent({
 <template>
   <!--    Start Up Bar     -->
   <div class="up-bar">
-    <div class="alert alert-success  rounded-0 alert-dismissible fade show mb-0" role="alert">
+    <div class="alert alert-secondary  rounded-0 alert-dismissible fade show mb-0" role="alert">
       <div class="container text-center">
         <h6 class="mb-0">
           هل تريد مساعدة نحن هنا للإجابة على إستفساراتكم
