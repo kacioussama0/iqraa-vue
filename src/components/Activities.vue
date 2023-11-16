@@ -1,34 +1,67 @@
 <script>
 import Card from "@/components/Card.vue";
-
+import {getData} from "@/api";
+import {VueProgressbar} from "@jambonn/vue-next-progressbar";
 export default {
-  components: {Card}
 
+  created() {
+    VueProgressbar.start();
+  },
+
+  async beforeMount() {
+
+    document.title = 'مدرسة إقرأ جنيف | أنشطة المدرسة'
+
+    this.categories = await getData('categories');
+    this.categories = this.categories.filter((item)=> {
+          return item.type === 'posts'
+    })
+
+    await VueProgressbar.done();
+
+  },
+  components: {Card},
+  data() {
+    return {
+      categories: []
+    }
+  }
 }
 </script>
 
 <template>
 
   <div class="container my-5">
-    <div class="row g-5">
 
 
-      <div class="col-md-6 col-lg-4" v-for="i in 6">
-        <card class="text-center">
-          <template v-slot:header>
-            <img src="../assets/imgs/landing-1.jpg" class="card-img-top" alt="...">
-          </template>
-          <template v-slot:body class="vstack gap-2 ">
-            <h5 class="card-title text-center">مقال عن مماراسات المدرسة</h5>
-            <p class="card-text text-muted">تعد الرحلات المدرسية طريقة من طرق التعليم التي تعتمد على التشويق والتجربة والبحث والاستكشاف وتمتلك في طياتها نوعاً من أنواع الترفيه ...</p>
-            <span> <i class="fa-duotone fa-calendar text-primary me-2"></i>تاريخ النشر :  07/05/2023  </span>
-            <router-link class="btn btn-outline-dark fw-bold stretched-link d-block my-2" to="/post">إقرأ المزيد</router-link>
-          </template>
-        </card>
+      <div class="categories">
+
+        <section class="category my-5" v-for="category in categories" >
+          <div v-if="category.posts.length">
+            <h3 class="mb-3 display-4 fw-bold">{{category.name}}</h3>
+            <div class="row gy-5 g-lg-5">
+
+
+              <div class="col-md-6 col-lg-4 " v-for="post in category.posts">
+                <card class="border-0 mb-3 shadow-sm rounded-2 overflow-hidden h-100">
+                  <template v-slot:header>
+                    <img :src="`${post.thumbnail}`" class="card-img-top" alt="...">
+                  </template>
+                  <template v-slot:body class="vstack gap-4">
+                    <h5 class="card-title mb-3 text-truncate fw-bold">{{post.title}}</h5>
+                    <div class="card-text text-muted text-truncate lh-1" style="font-size: 14px" v-html="post.content"></div>
+                    <span> <i class="fa-duotone fa-calendar text-primary me-2"></i>تاريخ النشر :  {{post.created_at}}  </span>
+                    <router-link class="fw-bold stretched-link d-block my-3" :to="`posts/${post.slug}`">إقرأ المزيد</router-link>
+                  </template>
+                </card>
+              </div>
+
+            </div>
+          </div>
+        </section>
 
       </div>
 
-    </div>
   </div>
 
 </template>

@@ -1,10 +1,30 @@
 <script>
 import Card from "@/components/Card.vue";
+import CInput from "@/components/CInput.vue";
+import CButton from "@/components/CButton.vue";
+import {postData} from "@/api";
+import {VueProgressbar} from "@jambonn/vue-next-progressbar";
 
 export default {
-  components: {Card},
+
+
+  created() {
+    VueProgressbar.start();
+  },
+
+  beforeMount() {
+    document.title = 'مدرسة إقرأ جنيف | تواصلوا معنا';
+  },
+
+  mounted() {
+    VueProgressbar.done();
+  },
+
+  components: {CButton, CInput, Card},
   data() {
     return {
+      FormStatus: '',
+      SubmitLoading: false,
       contacts: [
         {
           icon: 'fa-phone',
@@ -22,9 +42,59 @@ export default {
           text: 'Chemin Colladon 34, 1209 Genève',
           link: 'https://rb.gy/2ua5cv'
         }
-      ]
+      ],
+
+      name: {
+        value: '',
+        valid: false,
+      },
+      subject: {
+        value: '',
+        valid: false,
+      },
+      email: {
+        value: '',
+        valid: false,
+      },
+      message: {
+        value: '',
+        valid: false,
+      },
+
+    }
+  },
+  methods: {
+    async submit() {
+
+      if(this.valid) {
+        this.SubmitLoading = true;
+        let sended = await postData('send-message',{
+          'name': this.name.value,
+          'subject': this.subject.value,
+          'email': this.email.value,
+          'message': this.message.value
+        })
+
+        if(sended.success) {
+          this.SubmitLoading = false;
+          this.name = this.subject = this.email = this.message = {name: '',valid:false}
+          this.FormStatus = 'success';
+          setTimeout(()=> {
+            this.FormStatus = ''
+          },1000)
+        }
+      }
+    },
+    update(data) {
+      this[data.name] = data
+    },
+  },
+  computed: {
+    valid() {
+      return this.name.valid && this.subject.valid && this.email.valid && this.message.valid
     }
   }
+
 }
 </script>
 
@@ -52,36 +122,19 @@ export default {
 
    <div class="row justify-content-center align-items-center">
      <div class="col-md-6">
-       <form action="" class="my-5">
 
-         <form-kit
-             type="text"
-             placeholder="الرجاء إدخال إسمك بالكامل"
-             label="الاسم"
-             validation="required|max:25"
-         />
-
-         <form-kit
-             type="email"
-             placeholder="xyz@gmail.com"
-             label="البريد الإلكتروني"
-             validation="required|email|max:128"
-         />
-
-         <form-kit
-             type="textarea"
-             label="الرسالة"
-         />
-
-         <button class="btn btn-primary w-100 mt-3">إرسال</button>
-
-       </form>
+          <CInput id="name" :rules="{required: true, min: 3 , max: 50}" type="text" name="الإسم الكامل" @onUpdate="update" :value="name.value"/>
+          <CInput id="subject" :rules="{required: true,min:10,max:128}" type="text" name="الموضوع" @onUpdate="update" :value="subject.value"/>
+          <CInput id="email" :rules="{required: true, email: true, max:128}" type="email" name="البريد الإلكتروني" @onUpdate="update" :value="email.value"/>
+          <CInput id="message" :rules="{required: true, min:20}" type="textarea" name="الرسالة" @onUpdate="update" :value="message.value"/>
+          <CButton title="إرسال" @click="submit" :disabled="!valid" :status="FormStatus" :loading="SubmitLoading" />
 
      </div>
 
      <div class="col-md-6">
-       <img src="../assets/imgs/contact-us.svg" alt="">
+       <img src="../assets/imgs/2.png" alt="" class="img-fluid">
      </div>
+
    </div>
 
  </div>

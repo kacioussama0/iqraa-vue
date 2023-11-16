@@ -4,9 +4,9 @@ import Gallery from "@/components/Gallery.vue";
 import Contact from "@/components/Contact.vue";
 import Faq from "@/components/Faq.vue";
 import Activities from "@/components/Activities.vue";
-import Posts from "@/components/Posts.vue";
 import Post from "@/components/Post.vue";
 import Photos from "@/components/Photos.vue";
+import NotFound from "@/components/NotFound.vue";
 
 const routes = [
     {
@@ -18,6 +18,11 @@ const routes = [
         name: 'gallery',
         path: '/gallery',
         component: Gallery
+    },
+    {
+        name: 'photos',
+        path: '/gallery/:category',
+        component: Photos
     },
     {
         name: 'contact',
@@ -35,20 +40,17 @@ const routes = [
         component: Activities
     },
     {
-        name: 'posts',
-        path: '/posts',
-        component: Posts
-    },
-    {
         name: 'post',
-        path: '/post',
+        path: '/posts/:slug',
         component: Post
     },
     {
-        name: 'photos',
-        path: '/photos',
-        component: Photos
+        path: '/404', name: 'NotFound', component: NotFound
     },
+    {
+        path: '/:catchAll(.*)', redirect:'404'
+    }
+
 
 ]
 

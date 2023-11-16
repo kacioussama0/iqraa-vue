@@ -1,18 +1,31 @@
 <script>
-
+import {VueProgressbar} from "@jambonn/vue-next-progressbar";
 import Card from "@/components/Card.vue";
+import {getData} from "@/api";
+
+
+
 
 export default {
   components: {Card},
 
+  created() {
+    VueProgressbar.start();
+  },
+
+  async beforeMount() {
+    document.title = 'مدرسة إقرأ جنيف | الرئيسية';
+    this.latestPosts = await getData('latest-posts');
+    await  VueProgressbar.done();
+  },
   data() {
     return {
+      latestPosts: [],
       statistics: [
         {name: 'طالب' , goal: 1139 , icon: 'fa-graduation-cap'},
         {name: 'قاعة تدريس' , goal: 14 , icon: 'fa-screen-users'},
         {name: 'مدرس' , goal: 28 , icon: 'fa-chalkboard-teacher'},
       ],
-
       modules: [
         {name: 'اللغة العربية' , icon: 'fa-language', color: "danger"},
         {name: 'التربية الاسلامية' , icon: 'fa-mosque', color: "primary"},
@@ -39,22 +52,17 @@ export default {
 
   <section class="landing-page py-5 mb-3">
 
-
     <div class="container">
 
       <div class="row align-items-center">
 
-        <div class="col-lg-6 p-5 rounded-3 vstack gap-3 justify-content-center align-items-lg-start align-items-center">
-          <h2 class="fw-bolder"><i class="fa-duotone fa-hand-wave fa-1x"></i>{{$t('Welcome')}}</h2>
-          <h1 class="display-3 fw-bold text-danger">{{$t('School')}}</h1>
+        <div class="col-lg-6  rounded-3 vstack gap-3 justify-content-center align-items-lg-start align-items-center order-first">
+          <h2 class="fw-light"><i class="fa-duotone fa-hand-wave fa-1x"></i>{{$t('Welcome')}}</h2>
+          <h1 class="display-2 fw-bold text-danger text-lg-start text-center">{{$t('School')}}</h1>
           <p class="lh-lg text-muted text-lg-start text-center"> أن نكون مدرسة متميزة في تثقيف وحماية الهوية الإسلامية لأبنائنا. وأن نكون نموذجاً يحتذى به للمدارس العربية في أوروبا.</p>
-            <router-link to="/contact"  class="btn btn-primary d-block btn-lg px-5">
-            <i class="fa-duotone fa-school me-2"></i>
-            تعرف علينا
-          </router-link>
         </div>
 
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6 order-last order-lg-first">
               <img src="../assets/imgs/landing.png" alt="" class="rounded-5 img-fluid w-100 h-100">
         </div>
 
@@ -78,7 +86,7 @@ export default {
 
       <!-- Start Cards  -->
 
-      <div class="row my-5 g-5  align-items-center">
+      <div class="row my-5  gy-5 align-items-center">
 
         <div class="col-sm-6 col-md-4" v-for="module in modules">
           <card class="vstack gap-3 justify-content-center align-items-center  text-center">
@@ -106,7 +114,7 @@ export default {
 
     <div class="container">
 
-      <div class="row g-5">
+      <div class="row gy-5">
 
         <div class="col-sm-6 col-md-3 vstack gap-3 justify-content-center align-items-center text-light" v-for="item in statistics">
           <i :class="`fa-duotone ${item.icon} fa-4x`"></i>
@@ -164,7 +172,7 @@ export default {
 
         </div>
         <div class="col-lg-4">
-          <img src="../assets/imgs/features.svg" alt="" class="img-fluid">
+          <img src="../assets/imgs/education-dream.png" alt="" class="img-fluid">
         </div>
 
       </div>
@@ -181,10 +189,10 @@ export default {
 
     <div class="container">
 
-          <div class="row g-5 mb-5">
+          <div class="row gy-5 mb-5 align-items-center">
 
             <div class="col-md-6">
-              <img src="../assets/imgs/proprties.jpg" alt="" class="img-fluid rounded-5">
+              <img src="../assets/imgs/couple-student-score.png" alt="" class="img-fluid rounded-5">
             </div>
 
             <div class="col-md-6">
@@ -209,9 +217,9 @@ export default {
             <h4 class="lh-lg fw-normal"><span class="heading-shape fw-bolder">جنسيات التلاميذ</span></h4>
             <p>مدرستنا تضم تلاميذ من 35 جنسية مختلفة.</p>
 
-            <div class="row g-3 mt-4">
+            <div class="row gy-3 mt-4">
               <div class="col-4 col-sm-3 col-md-1" v-for="country in countries">
-                <div :class="`fi fi-${country}`" ></div>
+                <div :class="`fi fi-${country}  rounded-4` " ></div>
               </div>
             </div>
 
@@ -233,22 +241,20 @@ export default {
 
       <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">أخر منشوراتنا</span></h4>
 
-      <div class="row g-5">
+      <div class="row gy-5">
 
-
-        <div class="col-md-6 col-lg-4" v-for="i in 6">
-          <card class="text-center">
+        <div class="col-md-6 col-lg-4 " v-for="post in latestPosts">
+          <card class="border-0 mb-3  h-100 shadow-sm rounded-2 overflow-hidden">
             <template v-slot:header>
-              <img src="../assets/imgs/landing-2.jpg" class="card-img-top" alt="...">
+              <img :src="`${post.thumbnail}`" class="card-img-top" alt="...">
             </template>
-            <template v-slot:body class="vstack gap-2 ">
-              <h5 class="card-title text-center">مقال عن مماراسات المدرسة</h5>
-              <p class="card-text text-muted">تعد الرحلات المدرسية طريقة من طرق التعليم التي تعتمد على التشويق والتجربة والبحث والاستكشاف وتمتلك في طياتها نوعاً من أنواع الترفيه ...</p>
-              <span> <i class="fa-duotone fa-calendar text-primary me-2"></i>تاريخ النشر :  07/05/2023  </span>
-              <a href="#" class="btn btn-primary fw-bold stretched-link d-block my-2">إقرأ المزيد</a>
+            <template v-slot:body class="vstack gap-4">
+              <h5 class="card-title mb-3 text-truncate fw-bold">{{post.title}}</h5>
+              <div class="card-text text-muted text-truncate lh-1" style="font-size: 14px" v-html="post.content"></div>
+              <span> <i class="fa-duotone fa-calendar text-primary me-2"></i>تاريخ النشر :  {{post.created_at}}  </span>
+              <router-link class="fw-bold stretched-link d-block my-3" :to="`posts/${post.slug}`">إقرأ المزيد</router-link>
             </template>
           </card>
-
         </div>
 
       </div>
@@ -263,52 +269,49 @@ export default {
 
   <!--    Start Testimonials  -->
 
-  <section class="testimonials py-5">
+<!--  <section class="testimonials py-5">-->
 
 
-    <div class="container">
+<!--    <div class="container">-->
 
 
-      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">قالو عنا</span></h4>
+<!--      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">قالو عنا</span></h4>-->
 
-      <div id="carouselExampleIndicators" class="carousel slide rounded-4 mx-auto w-50" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" class="bg-primary" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" class="bg-primary" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner p-5">
-          <div class="carousel-item active text-center">
+<!--      <div id="carouselExampleIndicators" class="carousel slide rounded-4 mx-auto w-50" data-bs-ride="carousel">-->
+<!--        <div class="carousel-indicators">-->
+<!--          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>-->
+<!--          <button type="button" data-bs-target="#carouselExampleIndicators" class="bg-primary" data-bs-slide-to="1" aria-label="Slide 2"></button>-->
+<!--          <button type="button" data-bs-target="#carouselExampleIndicators" class="bg-primary" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
+<!--        </div>-->
+<!--        <div class="carousel-inner p-5">-->
+<!--          <div class="carousel-item active text-center">-->
 
-            <img src="https://mkte.tech/assets/imgs/landing-1.jpg" class="rounded-circle object-fit-cover mb-3" alt="..." style="width: 100px ; height: 100px">
-            <h3 class="mb-3">الأستاذ مهاجري زيان</h3>
-            <p class="text-muted">بارك الله فيكم وفي منهجكم الدراسي </p>
-          </div>
-          <div class="carousel-item text-center">
-            <img src="https://mkte.tech/assets/imgs/landing-3.jpg" class="rounded-circle object-fit-cover mb-3" alt="..." style="width: 100px ; height: 100px">
-            <h3 class="mb-3">الأستاذ إسماعيل دباح</h3>
-            <p class="text-muted">بارك الله فيكم وفي منهجكم الدراسي </p>
-          </div>
-          <div class="carousel-item text-center">
-            <img src="https://mkte.tech/assets/imgs/landing-2.jpg" class="rounded-circle object-fit-cover mb-3" alt="..." style="width: 100px ; height: 100px">
-            <h3 class="mb-3">الأستاذ مهاجري زيان</h3>
-            <p class="text-muted">بارك الله فيكم وفي منهجكم الدراسي </p>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <i class="fa-duotone fa-arrow-right text-primary fa-2x"></i>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <i class="fa-duotone fa-arrow-left text-primary fa-2x"></i>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+<!--            <h3 class="mb-3">الأستاذ مهاجري زيان</h3>-->
+<!--            <p class="text-muted">بارك الله فيكم وفي منهجكم الدراسي </p>-->
+<!--          </div>-->
+<!--          <div class="carousel-item text-center">-->
+<!--            <h3 class="mb-3">الأستاذ إسماعيل دباح</h3>-->
+<!--            <p class="text-muted">بارك الله فيكم وفي منهجكم الدراسي </p>-->
+<!--          </div>-->
+<!--          <div class="carousel-item text-center">-->
+<!--            <h3 class="mb-3">الأستاذ مهاجري زيان</h3>-->
+<!--            <p class="text-muted">بارك الله فيكم وفي منهجكم الدراسي </p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">-->
+<!--          <i class="fa-duotone fa-arrow-right text-primary fa-2x"></i>-->
+<!--          <span class="visually-hidden">Previous</span>-->
+<!--        </button>-->
+<!--        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">-->
+<!--          <i class="fa-duotone fa-arrow-left text-primary fa-2x"></i>-->
+<!--          <span class="visually-hidden">Next</span>-->
+<!--        </button>-->
+<!--      </div>-->
 
-    </div>
+<!--    </div>-->
 
 
-  </section>
+<!--  </section>-->
 
 
   <!--    End Testimonials  -->
@@ -415,14 +418,12 @@ export default {
 /* Start Testimonials */
 
 .testimonials .carousel-indicators {
-
   bottom: -30px !important;
 }
 
 .testimonials .carousel-indicators button {
   background: var(--bs-primary) !important;
-
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 

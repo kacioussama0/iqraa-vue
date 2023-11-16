@@ -40,8 +40,7 @@ export default {
     <div class="container  mb-5">
 
 
-      <div class="row mt-1 g-5 text-lg-start text-center">
-
+      <div class="row mt-1 gy-5 g-lg-5 text-lg-start text-center">
 
         <div class="col-lg-3 mt-2 mt-lg-5 vstack gap-4">
 
@@ -53,10 +52,10 @@ export default {
         <div class="col-lg-3 mt-2 mt-lg-5 justify-content-center align-items-center ">
           <h3 class="mt-2 mt-lg-5  fw-bolder">الإختصارات</h3>
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
             <li class="nav-item" v-for="item in listItem">
               <router-link :to="item.link" class="nav-link active" aria-current="page">{{$t(item.name)}}</router-link>
             </li>
-
 
           </ul>
         </div>
@@ -95,7 +94,7 @@ export default {
       </div>
 
 
-      <img src="/logo.svg" alt="" class="img-fluid  mx-auto mx-lg-0 d-block" style="width: 150px">
+      <img src="/logo.svg" alt="" class="img-fluid  mx-auto mx-lg-0 my-lg-0 my-3 d-block" style="width: 150px">
       <p class="text-lg-start text-center mt-2 mt-lg-3">كل الحقوق محفوظة مدرسة جنيف العربية &copy; 2023</p>
 
     </div>

@@ -1,4 +1,6 @@
 <script>
+import {Collapse} from "bootstrap";
+
 export default  {
   data() {
     return {
@@ -28,17 +30,27 @@ export default  {
   },
   methods: {
     changeLocal(lang) {
-
       if(lang != 'ar') document.dir = 'ltr'
       else document.dir = 'rtl'
       this.$i18n.locale = lang
       localStorage.setItem('locale',lang);
+    },
+    isActive(path) {
+      return (this.$route.path == path) ? 'active' : ''
+    },
+    hideMenu() {
+
+      if(window.innerWidth <= 991) {
+        const navBar = document.querySelector('#navbarSupportedContent');
+        const collapse = new Collapse(navBar);
+        collapse.hide();
+      }
     }
   },
   computed: {
     locale() {
       return this.$i18n.locale
-    }
+    },
   }
 }
 </script>
@@ -49,27 +61,27 @@ export default  {
 
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand fw-bolder" href="#" >
+      <router-link class="navbar-brand fw-bolder" to="/" >
         <img src="/logo-colored.svg" alt="" style="width: 120px">
-      </a>
+      </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa-duotone fa-bars fa-2x"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent" >
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li :class="`nav-item`" v-for="item in listItem" >
-            <router-link :to="item.link" class="nav-link active fw-bold"  aria-current="page">{{$t(item.name)}}</router-link>
+          <li :class="`nav-item  ${isActive(item.link)}`" @click="hideMenu" v-for="item in listItem" >
+            <router-link :to="item.link" :class="`nav-link fw-bold`"  aria-current="page">{{$t(item.name)}}</router-link>
           </li>
         </ul>
 
         <!--        Start Social Media    -->
 
         <div class="social-media d-lg-flex d-none">
-          <a class="nav-link active fw-bold fi fi-sa me-2"  v-if="locale === 'fr'"  @click="changeLocal('ar')"></a>
-          <a class="nav-link active fw-bold fi fi-ch me-2" v-else @click="changeLocal('fr')"></a>
-          <a href="#" class="bg-light me-2"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" class="bg-light me-2"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="bg-light me-2"><i class="fa-brands fa-youtube"></i></a>
+<!--          <a class="nav-link active fw-bold fi fi-sa me-2"  v-if="locale === 'fr'"  @click="changeLocal('ar')"></a>-->
+<!--          <a class="nav-link active fw-bold fi fi-ch me-2" v-else @click="changeLocal('fr')"></a>-->
+          <a href="#" class="bg-light me-2 text-decoration-none"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="bg-light me-2 text-decoration-none"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="bg-light me-2 text-decoration-none"><i class="fa-brands fa-youtube"></i></a>
         </div>
 
         <!--        End Social Media    -->
@@ -90,7 +102,6 @@ export default  {
 
 nav ul li {
   position: relative;
-
 }
 
 nav ul li::before, nav ul li.active::before {
@@ -142,7 +153,7 @@ nav div.social-media a {
   border: none !important;
 }
 
-li:first-child a {
+li.active a {
   color: var(--bs-danger) !important;
 }
 

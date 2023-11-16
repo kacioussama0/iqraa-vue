@@ -1,6 +1,20 @@
 <script>
+import {getData} from "@/api";
+import {VueProgressbar} from "@jambonn/vue-next-progressbar";
 export default {
-
+  created() {
+    VueProgressbar.start();
+  },
+  async beforeMount() {
+    document.title = 'مدرسة إقرأ جنيف | أسئلة شائعة';
+    this.faqs = await getData('faq');
+    await VueProgressbar.done()
+  },
+  data() {
+   return {
+     faqs: []
+   }
+ }
 }
 </script>
 
@@ -9,19 +23,17 @@ export default {
  <div class="container my-5">
    <h1 class="text-center my-5">أسئلة شائعة</h1>
 
-   <div class="accordion" id="accordionExample">
-     <div class="accordion-item">
+   <div class="accordion" id="accordionFaq">
+     <div class="accordion-item" v-for="faq in faqs">
        <h2 class="accordion-header">
-         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         <button :class="`accordion-button ${(faq.id == faqs[0].id) ? '' : 'collapsed'}`" type="button" data-bs-toggle="collapse" :data-bs-target="`#id-faq-${faq.id}`" aria-expanded="true" :aria-controls="`faq-${faq.id}`">
                 <i class="fa-duotone fa-question fa-2x me-2"></i>
-           ما هي مدرسة إقرأ
+                {{faq.question}}
          </button>
        </h2>
-       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+       <div :id="`id-faq-${faq.id}`" :class="`accordion-collapse collapse  ${(faq.id == faqs[0].id) ? 'show' : ''}`" data-bs-parent="#accordionFaq">
          <div class="accordion-body">
-
-           مدرسة جنيف العربية، هي مدرسة بسويسرا تابعة للمؤسسة الثقافية الإسلامية بجنيف، انشئت سنة 1978، ومنذ ذلك تعمل بالتعاون مع جميع عناصر العملية (الطاقم الإداري والتربوي والتلاميذ والاولياء) في بيئة آمنة من اجل دعم أبناء الجالية دينيا وتربويا وعقليا وخُلقيا ولغويا ومهارايا؛ وغيرهم من الجاليات غير المسلمة فيما يتعلق باللغة العربية من خلال فريق مؤهل إداريا وتربويا ومعرفيا وفق المعايير المعمول بها في التعليم، في بيئة تتسم بالتعاون والحيوية والتفاعل.
-
+           {{faq.answer}}
          </div>
        </div>
      </div>
