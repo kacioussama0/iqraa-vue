@@ -7,6 +7,7 @@ import Activities from "@/components/Activities.vue";
 import Post from "@/components/Post.vue";
 import Photos from "@/components/Photos.vue";
 import NotFound from "@/components/NotFound.vue";
+import WhoWeAre from "@/components/WhoWeAre.vue";
 
 const routes = [
     {
@@ -49,9 +50,12 @@ const routes = [
     },
     {
         path: '/:catchAll(.*)', redirect:'404'
+    },
+    {
+        name: 'who We Are',
+        path: '/who-we-are',
+        component: WhoWeAre
     }
-
-
 ]
 
 export const router = createRouter({

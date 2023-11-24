@@ -56,14 +56,15 @@ export default {
 
       <div class="row align-items-center">
 
-        <div class="col-lg-6  rounded-3 vstack gap-3 justify-content-center align-items-lg-start align-items-center order-first">
+        <div class="col-lg-6 align-items-center rounded-3 vstack gap-3 justify-content-center align-items-lg-start align-items-center order-last order-lg-first">
           <h2 class="fw-light"><i class="fa-duotone fa-hand-wave fa-1x"></i>{{$t('Welcome')}}</h2>
-          <h1 class="display-2 fw-bold text-danger text-lg-start text-center">{{$t('School')}}</h1>
+          <h1 class="display-4 fw-bold text-danger text-lg-start text-center">{{$t('School')}}</h1>
           <p class="lh-lg text-muted text-lg-start text-center"> أن نكون مدرسة متميزة في تثقيف وحماية الهوية الإسلامية لأبنائنا. وأن نكون نموذجاً يحتذى به للمدارس العربية في أوروبا.</p>
+          <router-link to="/who-we-are" class="btn btn-lg btn-primary">تعرفوا علينا</router-link>
         </div>
 
-        <div class="col-12 col-lg-6 order-last order-lg-first">
-              <img src="../assets/imgs/landing.png" alt="" class="rounded-5 img-fluid w-100 h-100">
+        <div class="col-12 col-lg-6 order-first order-lg-last">
+              <img src="../assets/imgs/landing.svg"  alt="landing page" class="rounded-5">
         </div>
 
       </div>
@@ -172,7 +173,7 @@ export default {
 
         </div>
         <div class="col-lg-4">
-          <img src="../assets/imgs/education-dream.png" alt="" class="img-fluid">
+          <img src="../assets/imgs/photo.svg" alt="" class="img-fluid">
         </div>
 
       </div>
@@ -192,7 +193,7 @@ export default {
           <div class="row gy-5 mb-5 align-items-center">
 
             <div class="col-md-6">
-              <img src="../assets/imgs/couple-student-score.png" alt="" class="img-fluid rounded-5">
+              <img src="../assets/imgs/ages.svg" alt="" class="img-fluid rounded-5">
             </div>
 
             <div class="col-md-6">
@@ -250,7 +251,7 @@ export default {
             </template>
             <template v-slot:body class="vstack gap-4">
               <h5 class="card-title mb-3 text-truncate fw-bold">{{post.title}}</h5>
-              <div class="card-text text-muted text-truncate lh-1" style="font-size: 14px" v-html="post.content"></div>
+              <div class="card-text text-muted text-truncate lh-lg text-truncate" style="font-size: 14px; height: 150px" v-html="post.content"></div>
               <span> <i class="fa-duotone fa-calendar text-primary me-2"></i>تاريخ النشر :  {{post.created_at}}  </span>
               <router-link class="fw-bold stretched-link d-block my-3" :to="`posts/${post.slug}`">إقرأ المزيد</router-link>
             </template>

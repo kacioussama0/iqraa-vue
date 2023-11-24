@@ -49,7 +49,7 @@ export default {
                   </template>
                   <template v-slot:body class="vstack gap-4">
                     <h5 class="card-title mb-3 text-truncate fw-bold">{{post.title}}</h5>
-                    <div class="card-text text-muted text-truncate lh-1" style="font-size: 14px" v-html="post.content"></div>
+                    <div class="card-text text-muted text-truncate lh-lg text-truncate" style="font-size: 14px; height: 150px" v-html="post.content"></div>
                     <span> <i class="fa-duotone fa-calendar text-primary me-2"></i>تاريخ النشر :  {{post.created_at}}  </span>
                     <router-link class="fw-bold stretched-link d-block my-3" :to="`posts/${post.slug}`">إقرأ المزيد</router-link>
                   </template>

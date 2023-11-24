@@ -1,7 +1,7 @@
 <template>
 
 
-    <up-bar/>
+<!--    <up-bar/>-->
 
   <!--    Start Header    -->
   <header >
