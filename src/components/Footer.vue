@@ -63,13 +63,13 @@ export default {
 
           <h3 class="mt-2 mt-lg-5  fw-bolder">تواصلوا معنا</h3>
 
-          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0" >
 
 
-            <li class="nav-item">
+            <li class="nav-item" >
               <a class="nav-link active" aria-current="page" href="tel:+(41) 799 653 711">
                 <i class="fa-duotone fa-phone-alt me-1"></i>
-                <span> +(41) 799 653 711</span>
+                <span dir="ltr">+(41) 79 462 94 17</span>
               </a>
             </li>
 
@@ -94,7 +94,6 @@ export default {
       </div>
 
 
-      <img src="/logo.svg" alt="" class="img-fluid  mx-auto mx-lg-0 my-lg-0 my-3 d-block" style="width: 150px">
       <p class="text-lg-start text-center mt-2 mt-lg-3">كل الحقوق محفوظة مدرسة جنيف العربية &copy; 2023</p>
 
     </div>

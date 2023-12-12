@@ -9,10 +9,17 @@ export default  {
           name: 'Home',
           link: '/'
         },
+
+        {
+          name: 'Our School',
+          link: '/who-we-are'
+        },
+
         {
           name: 'Gallery',
           link: '/gallery'
         },
+
         {
           name: 'School Activity',
           link: '/activities'
@@ -62,10 +69,10 @@ export default  {
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <router-link class="navbar-brand fw-bolder" to="/" >
-        <img src="/logo-colored.svg" alt="" style="width: 120px">
+        <img src="/logo.jpeg" alt="" style="width: 100px">
       </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fa-duotone fa-bars fa-2x"></i>
+        <i class="fa-duotone fa-bars text-primary fa-2x"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent" >
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
@@ -77,8 +84,8 @@ export default  {
         <!--        Start Social Media    -->
 
         <div class="social-media d-lg-flex d-none">
-<!--          <a class="nav-link active fw-bold fi fi-sa me-2"  v-if="locale === 'fr'"  @click="changeLocal('ar')"></a>-->
-<!--          <a class="nav-link active fw-bold fi fi-ch me-2" v-else @click="changeLocal('fr')"></a>-->
+          <a class="nav-link active fw-bold fi fi-sa me-2"  v-if="locale === 'fr'"  @click="changeLocal('ar')"></a>
+          <a class="nav-link active fw-bold fi fi-ch me-2" v-else @click="changeLocal('fr')"></a>
           <a href="#" class="bg-light me-2 text-decoration-none"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#" class="bg-light me-2 text-decoration-none"><i class="fa-brands fa-instagram"></i></a>
           <a href="#" class="bg-light me-2 text-decoration-none"><i class="fa-brands fa-youtube"></i></a>
@@ -96,6 +103,7 @@ export default  {
 </template>
 
 <style scoped>
+
 @import "flag-icons/css/flag-icons.css";
 
 /* Start Header */
@@ -106,11 +114,13 @@ nav ul li {
 
 nav ul li::before, nav ul li.active::before {
   content: '';
-  width: 100%;
+  width: 80%;
   height: 4px;
-  background: var(--bs-primary);
+  background: var(--bs-warning);
   position: absolute;
   bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 50px;
   transition: 0.7s;
   opacity: 0;
@@ -153,8 +163,12 @@ nav div.social-media a {
   border: none !important;
 }
 
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width) var(--bs-primary);
+}
+
 li.active a {
-  color: var(--bs-danger) !important;
+  color: var(--bs-primary) !important;
 }
 
 </style>

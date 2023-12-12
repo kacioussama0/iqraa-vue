@@ -27,11 +27,11 @@ export default {
         {name: 'مدرس' , goal: 28 , icon: 'fa-chalkboard-teacher'},
       ],
       modules: [
-        {name: 'اللغة العربية' , icon: 'fa-language', color: "danger"},
+        {name: 'اللغة العربية' , icon: 'fa-language', color: "warning"},
         {name: 'التربية الاسلامية' , icon: 'fa-mosque', color: "primary"},
         {name: 'القرآن الكريم' , icon: 'fa-book-quran', color: "primary"},
-        {name: 'القراءة' , icon: 'fa-book-open-reader', color: "danger"},
-        {name: 'المحادثة والتعبير .' , icon: 'fa-comments', color: "danger"},
+        {name: 'القراءة' , icon: 'fa-book-open-reader', color: "warning"},
+        {name: 'المحادثة والتعبير' , icon: 'fa-comments', color: "warning"},
         {name: 'منهاج إقرأ و ارتق' , icon: 'fa-stairs', color: "primary"},
       ],
       countries: ['iq','sy','lb','jo','ps','ye','sd','eg','ly','tn','dz','ma','mr','pk','af','tr','al','xk','ng','sn','gn','so','er','bd','ba','in','cn','br','fr','ch','sa','es','it','km','mk'],
@@ -47,24 +47,25 @@ export default {
 
 
 
-
   <!--    Start Landing Page  -->
 
-  <section class="landing-page py-5 mb-3">
+  <section class="landing-page py-5 my-5">
 
     <div class="container">
 
       <div class="row align-items-center">
 
-        <div class="col-lg-6 align-items-center rounded-3 vstack gap-3 justify-content-center align-items-lg-start align-items-center order-last order-lg-first">
+        <div class="col-lg-6 align-items-center rounded-3 my-5 vstack gap-3 justify-content-center align-items-lg-start align-items-center order-last order-lg-first">
           <h2 class="fw-light"><i class="fa-duotone fa-hand-wave fa-1x"></i>{{$t('Welcome')}}</h2>
-          <h1 class="display-4 fw-bold text-danger text-lg-start text-center">{{$t('School')}}</h1>
+          <h1 class="display-4 fw-bold text-primary text-lg-start text-center">{{$t('School')}}</h1>
           <p class="lh-lg text-muted text-lg-start text-center"> أن نكون مدرسة متميزة في تثقيف وحماية الهوية الإسلامية لأبنائنا. وأن نكون نموذجاً يحتذى به للمدارس العربية في أوروبا.</p>
-          <router-link to="/who-we-are" class="btn btn-lg btn-primary">تعرفوا علينا</router-link>
+          <router-link to="/who-we-are" class="btn btn-lg btn-warning">تعرفوا علينا</router-link>
         </div>
 
         <div class="col-12 col-lg-6 order-first order-lg-last">
-              <img src="../assets/imgs/landing.svg"  alt="landing page" class="rounded-5">
+
+          <img src="../assets/imgs/landing.jpeg"  alt="landing page" class="rounded-5 img-fluid">
+
         </div>
 
       </div>
@@ -75,6 +76,24 @@ export default {
   </section>
 
   <!--    End Landing Page  -->
+
+
+  <!-- Start Wish The Best -->
+
+
+  <div class="ad my-5 py-5">
+
+    <div class="container">
+      <h3 class="text-center display-5 fw-bold text-light">مدرسة جنيف العربية هي الاختيار الأفضل لطفلك</h3>
+    </div>
+
+  </div>
+
+
+  <!-- End Wish The Best -->
+
+
+
 
 
   <!--    Start Our Modules -->
@@ -92,7 +111,7 @@ export default {
         <div class="col-sm-6 col-md-4" v-for="module in modules">
           <card class="vstack gap-3 justify-content-center align-items-center  text-center">
             <template v-slot:body class="">
-              <i :class="`fa-duotone ${module.icon}  fa-3x text-${module.color} mb-3`"></i>
+              <i :class="`fa-duotone ${module.icon}  fa-4x text-${module.color} mb-4`"></i>
               <h5 class="fw-bolder">{{module.name}}</h5>
             </template>
           </card>
@@ -145,7 +164,7 @@ export default {
 
         <div class="col-12 col-lg-8 order-1 order-lg-0">
 
-          <div class="row">
+          <div class="row ">
 
             <div class="col-md-6 ">
               <ul class="list-unstyled vstack gap-3">
@@ -172,8 +191,8 @@ export default {
           </div>
 
         </div>
-        <div class="col-lg-4">
-          <img src="../assets/imgs/photo.svg" alt="" class="img-fluid">
+        <div class="col-lg-4 mb-5">
+          <img src="../assets/imgs/features.jpeg" alt="" class="img-fluid rounded-5">
         </div>
 
       </div>
@@ -192,8 +211,8 @@ export default {
 
           <div class="row gy-5 mb-5 align-items-center">
 
-            <div class="col-md-6">
-              <img src="../assets/imgs/ages.svg" alt="" class="img-fluid rounded-5">
+            <div class="col-md-6 ">
+              <img src="../assets/imgs/ages.jpeg" alt="" class="img-fluid rounded-5  object-fit-cover" style="width:100%;height: 500px">
             </div>
 
             <div class="col-md-6">
@@ -220,7 +239,7 @@ export default {
 
             <div class="row gy-3 mt-4">
               <div class="col-4 col-sm-3 col-md-1" v-for="country in countries">
-                <div :class="`fi fi-${country}  rounded-4` " ></div>
+                <div :class="`fi fi-${country}`" ></div>
               </div>
             </div>
 
@@ -268,56 +287,6 @@ export default {
   <!--    End Posts  -->
 
 
-  <!--    Start Testimonials  -->
-
-<!--  <section class="testimonials py-5">-->
-
-
-<!--    <div class="container">-->
-
-
-<!--      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">قالو عنا</span></h4>-->
-
-<!--      <div id="carouselExampleIndicators" class="carousel slide rounded-4 mx-auto w-50" data-bs-ride="carousel">-->
-<!--        <div class="carousel-indicators">-->
-<!--          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>-->
-<!--          <button type="button" data-bs-target="#carouselExampleIndicators" class="bg-primary" data-bs-slide-to="1" aria-label="Slide 2"></button>-->
-<!--          <button type="button" data-bs-target="#carouselExampleIndicators" class="bg-primary" data-bs-slide-to="2" aria-label="Slide 3"></button>-->
-<!--        </div>-->
-<!--        <div class="carousel-inner p-5">-->
-<!--          <div class="carousel-item active text-center">-->
-
-<!--            <h3 class="mb-3">الأستاذ مهاجري زيان</h3>-->
-<!--            <p class="text-muted">بارك الله فيكم وفي منهجكم الدراسي </p>-->
-<!--          </div>-->
-<!--          <div class="carousel-item text-center">-->
-<!--            <h3 class="mb-3">الأستاذ إسماعيل دباح</h3>-->
-<!--            <p class="text-muted">بارك الله فيكم وفي منهجكم الدراسي </p>-->
-<!--          </div>-->
-<!--          <div class="carousel-item text-center">-->
-<!--            <h3 class="mb-3">الأستاذ مهاجري زيان</h3>-->
-<!--            <p class="text-muted">بارك الله فيكم وفي منهجكم الدراسي </p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">-->
-<!--          <i class="fa-duotone fa-arrow-right text-primary fa-2x"></i>-->
-<!--          <span class="visually-hidden">Previous</span>-->
-<!--        </button>-->
-<!--        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">-->
-<!--          <i class="fa-duotone fa-arrow-left text-primary fa-2x"></i>-->
-<!--          <span class="visually-hidden">Next</span>-->
-<!--        </button>-->
-<!--      </div>-->
-
-<!--    </div>-->
-
-
-<!--  </section>-->
-
-
-  <!--    End Testimonials  -->
-
-
 
 
 </template>
@@ -331,6 +300,13 @@ export default {
   width: 100%;
 }
 
+.ad {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 
 .statistics {
   min-height: 500px;
@@ -344,14 +320,15 @@ export default {
   z-index: 5;
 }
 
-.statistics::before {
+.statistics::before,
+.ad::before{
   content: '';
   width: 100%;
   min-height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: var(--bs-secondary);
+  background-color: var(--bs-primary);
   opacity: 0.9;
   z-index: -1;
 }
@@ -363,7 +340,7 @@ export default {
 .landing-page {
   background-image: url("../assets/imgs/Shape Hero.svg");
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: top center;
 }
 
 .landing-page .landing-imgs img {

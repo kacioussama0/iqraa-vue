@@ -4,7 +4,7 @@
 <!--    <up-bar/>-->
 
   <!--    Start Header    -->
-  <header >
+  <header>
     <nav-bar />
   </header>
   <!--        End Header    -->
@@ -39,14 +39,9 @@ export  default  {
 
 /* Start Global Rules */
 
-@font-face {
-  font-family: ExpoArabic;
-  src: url('assets/fonts/ExpoArabic-Book.ttf');
-}
 
 body {
-  //font-family: 'ExpoArabic', sans-serif !important;
-  font-family: 'Noto Kufi Arabic', sans-serif;
+  font-family: 'Cairo', sans-serif !important;
 }
 
 @media screen and (min-width: 992px) {
@@ -93,7 +88,7 @@ body {
 }
 
 .v-p-bar {
-  background: var(--bs-primary) !important;
+  background: var(--bs-warning) !important;
 }
 
 /* End Global Rules */

@@ -6,13 +6,13 @@ export default {
 
 <template>
 
-  <div class="card border-0 shadow">
+  <div class="card border-0 shadow-sm">
 
     <div class="card-header p-0 bg-transparent" v-if="$slots.header">
       <slot name="header"/>
     </div>
 
-    <div class="card-body p-4" v-if="$slots.body">
+    <div class="card-body p-5" v-if="$slots.body">
       <slot name="body"/>
     </div>
 

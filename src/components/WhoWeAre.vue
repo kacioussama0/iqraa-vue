@@ -6,9 +6,71 @@ export default {
 
 <template>
 
-  <div class="president my-5 bg-primary-subtle py-3">
+  <div class="who-we-are">
     <div class="container">
-      <div class="row align-items-center mb-5">
+      <h2 class="my-5 fw-bold">من نحن</h2>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h5>من نحن</h5>
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+             مدرسة جنيف العربية، هي مدرسة بسويسرا تابعة للمؤسسة الثقافية الإسلامية بجنيف، انشئت سنة 1978، ومنذ ذلك تعمل بالتعاون مع جميع عناصر العملية (الطاقم الإداري والتربوي والتلاميذ والاولياء) في بيئة آمنة من اجل دعم أبناء الجالية دينيا وتربويا وعقليا وخُلقيا ولغويا ومهارايا؛ وغيرهم من الجاليات غير المسلمة فيما يتعلق باللغة العربية من خلال فريق مؤهل إداريا وتربويا ومعرفيا وفق المعايير المعمول بها في التعليم، في بيئة تتسم بالتعاون والحيوية والتفاعل. </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <h5>الرؤية</h5>
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              مدرسة جنيف العربية مدرسة متميزة في حماية الهوية الإسلامية لأبناء الجالية، وجعلهم نافعـين لذاتهم ومجتمعهم، بما يجعلها نموذجا للمدارس العربية في اوروبا.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <h5>الرسالة</h5>
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              مدرسة بفريق متكامل ومهني في تربية وتكوين أبناء الجالية لإخراج مواطن مسلم صالح ونافع لنفسه واسرته ومجتمعه، بترقية القيم والاخلاق وتعليم اللغة العربية، وتعزيز مكانة العلم والتعلّم، وتطوير أنفسهم طوال حياتهم، من خلال مناهج ووسائل تربوية حديثة، و مناشط متنوعة.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              <h5>الأهداف</h5>
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              اللغة العربية الأهداف اعتماد اللغة الفصيحة لغة تواصل و تعلم . تمكين المتعلم من مهارات اللغة الأربعة (الاستماع و التحدث و القراءة و الكتابة) تمكين المتعلم من استخدام أساليب التعبير في الحوار والمناقشة والتعليق وإبداء الرأي وعرض المعلومات. استخدام استراتيجيات التعلم النشط وطرائق التدريس الفعالة والتي تنمي مهارات التفكير عند المتعلم. التركيز على القيم التي يحتاجها المتعلم والتي تجعله فخورا بدينه وهويته منتمياً الى أسرته وأمته الدراسات الإسلامية الأهداف تعليم العقيدة والقيم الإسلامية مساعدة الطالب المسلم على تعلم المسائل والممارسات الإسلامية تعليم أساليب الفهم المعتمدة على تعاليم الاسلام تعليم الطالب المسلم باللغة الفرنسية، كي يسهل عليه فهم عقيدته توفير الاساس المعرفي الذي يقوم بتوعية الطالب المسلم الذي يعيش في في الغرب بالممارسات الثقافية التي لا تتفق مع القيم الاسلامية ويمكن ترتيب المحتوى التعليمي على النحو التالي:( مجرد اقتراح) 1-العقيدة، 2-القرآن الكريم وعلومه، 3-السنةوالسيرة النبوية ،4-العبادات والمعاملات ،5-الآداب والأخلاق القرآن الأهداف متابعة الحفظ و تشجيع الأطفال على حفظ القرآن تعليم التلاوة الصحيحة وضبط الحفظ مع أستاذة لهم إجازات في تدريس القرآن وبأسلوب تفاعلي جميل
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="president my-3">
+
+    <div class="container">
+
+      <h2 class="my-5 fw-bold">المدير العام للمؤسسة</h2>
+
+      <div class="row align-items-center mb-5 ">
         <div class="col-md-4">
           <img src="../assets/imgs/president.jpg" alt="president" class="rounded-5 mb-3 img-fluid" >
         </div>

@@ -27,18 +27,18 @@ export default {
       SubmitLoading: false,
       contacts: [
         {
-          icon: 'fa-phone',
-          text: '+(41) 799 653 711',
-          link: 'tel:+(41) 799 653 711'
+          icon: 'fa-brands fa-whatsapp',
+          text: '+(41) 79 462 94 17',
+          link: 'tel: +(41) 79 462 94 17'
 
         },
         {
-          icon: 'fa-envelope',
+          icon: 'fa-duotone fa-envelope',
           text: 'Madrassa@fcigeneve.ch',
           link: 'mailto:info@fcigeneve.ch'
         },
         {
-          icon: 'fa-location-dot',
+          icon: 'fa-duotone  fa-location-dot',
           text: 'Chemin Colladon 34, 1209 Genève',
           link: 'https://rb.gy/2ua5cv'
         }
@@ -110,8 +110,8 @@ export default {
        <card>
          <template v-slot:body>
            <div class="vstack gap-3 text-center justify-content-center align-items-center">
-             <i :class="`fa-duotone ${info.icon} fa-3x`"></i>
-             <a :href="info.link" target="_blank" class="fw-bolder text-decoration-none text-dark fs-5">{{info.text}}</a>
+             <i :class="`${info.icon} fa-3x`"></i>
+             <a :href="info.link" target="_blank" class="fw-bolder text-decoration-none text-dark fs-5" dir="ltr">{{info.text}}</a>
            </div>
          </template>
        </card>
