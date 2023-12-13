@@ -69,7 +69,7 @@ export default  {
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <router-link class="navbar-brand fw-bolder" to="/" >
-        <img src="/logo.jpeg" alt="" style="width: 100px">
+        <img src="/logo.svg" alt="" style="width: 120px">
       </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa-duotone fa-bars text-primary fa-2x"></i>

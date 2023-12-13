@@ -33,7 +33,6 @@ export default {
 
   <div class="container my-5">
 
-
       <div class="categories">
 
         <section class="category my-5" v-for="category in categories" >
@@ -41,15 +40,14 @@ export default {
             <h3 class="mb-3 display-4 fw-bold">{{category.name}}</h3>
             <div class="row gy-5 g-lg-5">
 
-
               <div class="col-md-6 col-lg-4 " v-for="post in category.posts">
-                <card class="border-0 mb-3 shadow-sm rounded-2 overflow-hidden h-100">
+                <card class="border-0 mb-3 rounded-2 overflow-hidden h-100">
                   <template v-slot:header>
-                    <img :src="`${post.thumbnail}`" class="card-img-top" alt="...">
+                    <img :src="`${post.thumbnail}`" class="card-img-top object-fit-cover" alt="..." style="height: 300px">
                   </template>
                   <template v-slot:body class="vstack gap-4">
-                    <h5 class="card-title mb-3 text-truncate fw-bold">{{post.title}}</h5>
-                    <div class="card-text text-muted text-truncate lh-lg text-truncate" style="font-size: 14px; height: 150px" v-html="post.content"></div>
+                    <h5 class="card-title mb-3 text-truncate fw-bold" style="font-size: 16px;">{{post.title}}</h5>
+                    <div class="card-text text-muted text-truncate text-truncate" style="font-size: 14px; height: 40px" v-html="post.content"></div>
                     <span> <i class="fa-duotone fa-calendar text-primary me-2"></i>تاريخ النشر :  {{post.created_at}}  </span>
                     <router-link class="fw-bold stretched-link d-block my-3" :to="`posts/${post.slug}`">إقرأ المزيد</router-link>
                   </template>

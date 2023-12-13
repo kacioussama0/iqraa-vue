@@ -35,10 +35,9 @@ export default {
   <!--    Start Footer  -->
 
 
-  <footer class="mt-0 pt-0 pb-1  position-relative text-bg-primary">
+  <footer class="mt-0 pt-0 pb-1  position-relative text-bg-primary bg-gradient">
 
     <div class="container  mb-5">
-
 
       <div class="row mt-1 gy-5 g-lg-5 text-lg-start text-center">
 

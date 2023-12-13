@@ -12,7 +12,7 @@ export default {
     document.title = 'مدرسة إقرأ جنيف | المعرض';
     this.categories = await getData('categories');
     this.categories = this.categories.filter((item)=> {
-      return item.type == 'images';
+      return item.type === 'images';
     });
     await VueProgressbar.done();
   },
@@ -31,19 +31,19 @@ export default {
 
  <div class="container my-5">
 
-   <h1>المعرض</h1>
+   <h1 class="fw-bold">المعرض</h1>
 
-    <div class="row mt-5">
+    <div class="row gy-5 mt-2">
       <div class="col-md-4" v-for="category in categories">
-        <card>
+        <card class="overflow-hidden">
           <template v-slot:header>
             <div class="card-img" :style="{backgroundImage : `url('${category.thumbnail}')`}"></div>
             <router-link :to="`/gallery/${category.slug}`" class="stretched-link"  ></router-link>
+
+            <h3 class="text-center fw-bolder my-3">{{category.name}}</h3>
+
           </template>
 
-          <template v-slot:footer>
-            <h3 class="text-center fw-bolder">{{category.name}}</h3>
-          </template>
         </card>
       </div>
 
