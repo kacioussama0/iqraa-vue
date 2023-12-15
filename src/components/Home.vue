@@ -29,7 +29,7 @@ export default {
       modules: [
         {name: 'اللغة العربية' , icon: 'fa-language', color: "warning"},
         {name: 'التربية الاسلامية' , icon: 'fa-mosque', color: "primary"},
-        {name: 'القرآن الكريم' , icon: 'fa-book-quran', color: "primary"},
+        {name: 'القرآن الكريم' , icon: 'fa-book', color: "primary"},
         {name: 'القراءة' , icon: 'fa-book-open-reader', color: "warning"},
         {name: 'المحادثة والتعبير' , icon: 'fa-comments', color: "warning"},
         {name: 'منهاج إقرأ و ارتق' , icon: 'fa-stairs', color: "primary"},
@@ -170,18 +170,18 @@ export default {
               <ul class="list-unstyled vstack gap-3">
                 <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعزيز تطوير شخصية الفرد المنتسب إلى مدرستنا بناءً تربويًا سليمًا وشاملًا</li>
                 <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعزيز الفهم الصحيح للإسلام والتطبيق الصحيح للعقيدة الإسلامية وتعميق معانيها.</li>
-                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعريف ابناءنا بشخصية النبي محمد صلى الله عليه وسلم وتعزيز حبه في قلوبهم.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعريف أبناءنا بشخصية النبي محمد صلى الله عليه وسلم وتعزيز حبه في قلوبهم.</li>
                 <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعريف ابناءنا بمحطات مختارة في السيرة النبوية وتعليمهم كيفية الاستفادة منها في حياتهم اليومية.</li>
-                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>اكساب ابناءنا الثقافة الإسلامية الصحيحة من خلال دراسة سير الأنبياء والرسل والرسائل السماوية.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>إكساب أبناءنا الثقافة الإسلامية الصحيحة من خلال دراسة سير الأنبياء والرسل والرسائل السماوية.</li>
                 <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعزيز قيمة اللغة العربية وأهميتها في حياة المتعلم وحضارته كفرد مسلم.</li>
               </ul>
             </div>
             <div class="col-md-6">
               <ul class="list-unstyled vstack gap-3">
-                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعريف ابناءنا بأركان الإسلام وأهميتها في الحياة اليومية.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعريف أبناءنا بأركان الإسلام وأهميتها في الحياة اليومية.</li>
                 <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تنمية القدرة على استخدام القواميس والمراجع باللغة العربية بفعالية.</li>
                 <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعزيز القيم الأخلاقية والآداب والفضائل الإسلامية، مع تعزيز قيم المواطنة والمشاركة في المجتمع.</li>
-                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تطوير مهارات الاستماع والتحدث والقراءة والكتابة باللغة العربية بشكل صحيح، وتشجيع التفاعل مع المواد المقروءة.</li>
+                <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تطوير مهارات الإستماع والتحدث والقراءة والكتابة باللغة العربية بشكل صحيح، وتشجيع التفاعل مع المواد المقروءة.</li>
                 <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>حفظ بعض السور القرآنية المختارة (حوالي 5 أحزاب).</li>
                 <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>حفظ بعض الأحاديث المناسبة من الأربعين النووية.</li>
                 <li><i class="fa-duotone fa-circle-check text-primary me-2"></i>تعليم النطق الصحيح للحروف العربية والتعريف بالرسم العثماني للحروف.</li>
@@ -259,7 +259,7 @@ export default {
     <div class="container">
 
 
-      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">أخر منشوراتنا</span></h4>
+      <h4 class="lh-lg fw-normal text-center mb-5"><span class="heading-shape fw-bolder">آخر منشوراتنا</span></h4>
 
       <div class="row gy-5">
 
@@ -337,11 +337,6 @@ export default {
 /* Start Landing Page */
 
 
-.landing-page {
-  background-image: url("../assets/imgs/Shape Hero.svg");
-  background-repeat: no-repeat;
-  background-position: top center;
-}
 
 .landing-page .landing-imgs img {
   width: 300px;
