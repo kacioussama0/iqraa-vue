@@ -1,6 +1,9 @@
 <script>
 export default {
-  name: "WhoWeAre"
+  name: "WhoWeAre",
+  beforeMount() {
+    document.title = 'مدرسة إقرأ جنيف | من نحن'
+  }
 }
 </script>
 
