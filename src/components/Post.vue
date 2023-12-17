@@ -26,14 +26,14 @@ export default  {
   <div class="post-header position-relative" :style="{backgroundImage: `url('${post.thumbnail}')`}">
       <h1 class="text-center fs-3 lh-lg position-absolute text-white fw-bolder start-50 top-50 translate-middle">{{post.title}}</h1>
   </div>
-  <div class="container my-5">
+  <div class="container my-5 post-content">
       <div class="row">
         <div class="col-md-12" v-html="post.content"></div>
       </div>
   </div>
 </template>
 
-<style scoped>
+<style >
 .post-header {
   min-height: 250px;
   background-size: cover;
@@ -52,4 +52,9 @@ export default  {
   opacity: .5;
   z-index: 0;
 }
+
+.post-content img {
+  width: 100%;
+}
+
 </style>
