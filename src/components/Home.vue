@@ -354,16 +354,6 @@ export default {
 
 /* End Landing Page */
 
-/* Start Our Modules */
-
-.our-modules {
-  background-image: url("../assets/imgs/Shape Hero.svg");
-  background-repeat: no-repeat;
-  background-position: right center;
-}
-
-/* End Our Modules */
-
 
 /* Start Our Features */
 
