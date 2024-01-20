@@ -1,13 +1,13 @@
 <template>
 
 
-<!--    <up-bar/>-->
 
   <!--    Start Header    -->
   <header>
     <nav-bar />
   </header>
   <!--        End Header    -->
+
 
   <!--  Start Main  -->
 
@@ -26,8 +26,9 @@ import NavBar from "./components/NavBar.vue";
 import Footer from "./components/Footer.vue";
 import UpBar from "@/components/UpBar.vue";
 import {VueProgressbar} from "@jambonn/vue-next-progressbar";
+import News from "@/components/News.vue";
 export  default  {
-  components: {UpBar, Footer, NavBar},
+  components: {News, UpBar, Footer, NavBar},
   mounted() {
     VueProgressbar.done()
   },
@@ -39,13 +40,9 @@ export  default  {
 
 /* Start Global Rules */
 
-
-body {
-  font-family: 'Cairo', sans-serif !important;
-}
-
 @media screen and (min-width: 992px) {
   .heading-shape {
+    font-size: 32px;
     position: relative;
   }
 

@@ -2,15 +2,21 @@
 import {VueProgressbar} from "@jambonn/vue-next-progressbar";
 import Card from "@/components/Card.vue";
 import {getData} from "@/api";
+import News from "@/components/News.vue";
 
-
-
+import "https://code.jquery.com/jquery-1.11.0.min.js";
+import "https://code.jquery.com/jquery-migrate-1.2.1.min.js";
+import "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js";
 
 export default {
-  components: {Card},
+  components: {News, Card},
 
-  created() {
+  async created() {
+
     VueProgressbar.start();
+
+    this.news = await getData('latest-news');
+
   },
 
   async beforeMount() {
@@ -21,6 +27,7 @@ export default {
   data() {
     return {
       latestPosts: [],
+      news: [],
       statistics: [
         {name: 'طالب' , goal: 1139 , icon: 'fa-graduation-cap'},
         {name: 'قاعة تدريس' , goal: 14 , icon: 'fa-screen-users'},
@@ -38,14 +45,39 @@ export default {
     }
   },
 
+   beforeRouteEnter() {
 
+      $(document).ready(function(){
+      $(".trending-news-slider").slick({
+        infinite: true,
+        arrows: false,
+        dots: false,
+        rtl: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        prevArrow:
+            "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+        nextArrow:
+            "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              dots: false,
+              arrows: false
+            }
+          }
+        ]
+      });
+    })
+  }
 }
 
 </script>
 
 <template>
 
-
+  <news :news="news" />
 
   <!--    Start Landing Page  -->
 
@@ -58,14 +90,12 @@ export default {
         <div class="col-lg-6 align-items-center rounded-3 my-5 vstack gap-3 justify-content-center align-items-lg-start align-items-center order-last order-lg-first">
           <h2 class="fw-light"><i class="fa-duotone fa-hand-wave fa-1x"></i>{{$t('Welcome')}}</h2>
           <h1 class="display-4 fw-bold text-primary text-lg-start text-center">{{$t('School')}}</h1>
-          <p class="lh-lg text-muted text-lg-start text-center"> أن نكون مدرسة متميزة في تثقيف وحماية الهوية الإسلامية لأبنائنا. وأن نكون نموذجاً يحتذى به للمدارس العربية في أوروبا.</p>
-          <router-link to="/who-we-are" class="btn btn-lg btn-warning">تعرفوا علينا</router-link>
+          <p class="lh-lg text-muted text-lg-start text-center"> أن نكون مدرسة متميزة في تثقيف وحماية الهوية الإسلامية لأبنائنا.<br>  وأن نكون نموذجاً يحتذى به للمدارس العربية في أوروبا.</p>
+          <router-link to="/who-we-are" class="btn btn-lg btn-warning rounded-pill px-5 py-2 fw-bold">تعرفوا علينا</router-link>
         </div>
 
         <div class="col-12 col-lg-6 order-first order-lg-last">
-
-          <img src="../assets/imgs/landing.jpeg"  alt="landing page" class="rounded-5 img-fluid">
-
+          <img src="../assets/imgs/landing.jpeg"  alt="landing page" class="rounded-3 img-fluid">
         </div>
 
       </div>
@@ -80,7 +110,6 @@ export default {
 
   <!-- Start Wish The Best -->
 
-
   <div class="ad my-5 py-5">
 
     <div class="container">
@@ -89,10 +118,7 @@ export default {
 
   </div>
 
-
   <!-- End Wish The Best -->
-
-
 
 
 
@@ -201,9 +227,7 @@ export default {
 
   </section>
 
-
   <!--    End Our Features -->
-
 
   <section class="properties py-5">
 
@@ -251,7 +275,6 @@ export default {
 
   </section>
 
-
   <!--    Start Posts  -->
 
 
@@ -269,8 +292,7 @@ export default {
               <img :src="`${post.thumbnail}`" class="card-img-top object-fit-cover" alt="..." style="height: 300px">
             </template>
             <template v-slot:body class="vstack gap-4">
-              <h5 class="card-title mb-3 text-truncate fw-bold" style="font-size: 16px;">{{post.title}}</h5>
-              <div class="card-text text-muted text-truncate text-truncate" style="font-size: 14px; height: 40px" v-html="post.content"></div>
+              <h2 class="card-title mb-3 text-truncate fw-bold" style="font-size: 16px;">{{post.title}}</h2>
               <span> <i class="fa-duotone fa-calendar text-primary me-2"></i>تاريخ النشر :  {{post.created_at}}  </span>
               <router-link class="fw-bold stretched-link d-block my-3" :to="`posts/${post.slug}`">إقرأ المزيد</router-link>
             </template>

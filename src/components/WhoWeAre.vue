@@ -95,15 +95,15 @@ export default {
 
     <div class="container">
 
-      <h2 class="my-5 fw-bold">المدير العام للمؤسسة</h2>
+      <h2 class="my-5 fw-bold special-heading">المدير العام للمؤسسة</h2>
 
-      <div class="row align-items-center mb-5 ">
+      <div class="row align-items-center mb-5 bg-pri">
         <div class="col-md-4">
           <img src="../assets/imgs/president.jpg" alt="president" class="rounded-5 mb-3 img-fluid" >
         </div>
 
         <div class="col-md-8">
-          <h3 class="fw-light mb-5">سعادة الأستاذ صلاح المريقب</h3>
+          <h3 class="fw-light mb-4">سعادة الأستاذ صلاح المريقب</h3>
           <h4 class="fw-bold">المشرف والمدير العام للمؤسسة الإسلامية الثقافية في جنيف،</h4>
         </div>
 

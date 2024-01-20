@@ -36,11 +36,12 @@ export default {
     <div class="row gy-5 mt-2">
       <div class="col-md-4" v-for="category in categories">
         <card class="overflow-hidden">
-          <template v-slot:header>
-            <div class="card-img" :style="{backgroundImage : `url('${category.thumbnail}')`}"></div>
-            <router-link :to="`/gallery/${category.slug}`" class="stretched-link"  ></router-link>
+          <template v-slot:header class="position-relative">
 
-            <h3 class="text-center fw-bolder my-3">{{category.name}}</h3>
+            <div class="card-img" :style="{backgroundImage : `url('${category.thumbnail}')`}"></div>
+            <router-link :to="`/gallery/${category.slug}`" class="stretched-link"></router-link>
+
+            <h3 class="text-center fw-bolder my-3 position-absolute bottom-0 mb-4 ms-3 text-light">{{category.name}}</h3>
 
           </template>
 

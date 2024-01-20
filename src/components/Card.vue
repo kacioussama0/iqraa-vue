@@ -6,7 +6,7 @@ export default {
 
 <template>
 
-  <div class="card border-0 rounded-5 shadow">
+  <div class="card border-0 rounded-0 shadow">
 
     <div class="card-header border-0 p-0 bg-transparent" v-if="$slots.header">
       <slot name="header"/>

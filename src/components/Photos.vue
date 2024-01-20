@@ -28,7 +28,7 @@ export default  {
 <template>
   <div class="container my-5">
 
-<!--    <SimpleGallery  galleryID="iqraa-gallery" :images="photos" />-->
+
 
     <div class="row gy-5 g-lg-5">
       <div class="col-12 col-md-4" v-for="photo in photos">

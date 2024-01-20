@@ -53,7 +53,7 @@ export default  {
 
 
   <div class="form-floating" v-if="type !== 'textarea' && type !== 'select'">
-    <input :type="type" :id="id"  :class="`form-control bg-white bg-opacity-50 border-0    border-bottom border-dark-subtle  mb-1 ${error ? 'error': ''}`"  :placeholder="`Entrer  ${name}`" @input="input" :value="value" />
+    <input :type="type" :id="id"  :class="`form-control bg-white bg-opacity-50 border-0  border-bottom border-dark-subtle  mb-1 ${error ? 'error': ''}`"  :placeholder="`Entrer  ${name}`" @input="input" :value="value" />
     <label :for="id" class="">{{name}}</label>
   </div>
 
@@ -75,12 +75,11 @@ export default  {
 
 input,select,textarea {
   transition: .3s;
-
+  border-radius: 0;
 }
 
 input:focus,select:focus,textarea:focus  {
   box-shadow: none;
-
 }
 
 .error {
@@ -91,7 +90,6 @@ input:focus,select:focus,textarea:focus  {
 .form-floating > .form-control ~ label::after
 {
   background: transparent !important;
-
 }
 
 

@@ -69,7 +69,7 @@ export default  {
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <router-link class="navbar-brand fw-bolder" to="/" >
-        <img src="/logo.svg" alt="" style="width: 120px">
+        <img src="/logo.svg" alt="" style="width: 100px">
       </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa-duotone fa-bars text-primary fa-2x"></i>
@@ -121,7 +121,6 @@ nav ul li::before, nav ul li.active::before {
   bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 50px;
   transition: 0.7s;
   opacity: 0;
 }
@@ -138,7 +137,6 @@ nav ul li:hover::before , nav ul li.active::before{
 .active {
   font-weight: 500;
 }
-
 
 nav div.social-media a {
   display: flex;
