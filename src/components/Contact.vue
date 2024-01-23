@@ -120,7 +120,7 @@ export default {
 
 
 
-   <div class="row justify-content-center align-items-center">
+   <div class="row justify-content-center align-items-center my-3">
      <div class="col-md-6">
 
           <CInput id="name" :rules="{required: true, min: 3 , max: 50}" type="text" name="الإسم الكامل" @onUpdate="update" :value="name.value"/>
@@ -131,8 +131,8 @@ export default {
 
      </div>
 
-     <div class="col-md-6">
-       <img src="../assets/imgs/2.png" alt="" class="img-fluid">
+     <div class="col-md-6  order-first order-md-last">
+       <img src="../assets/imgs/contact.svg" alt="" class="img-fluid">
      </div>
 
    </div>

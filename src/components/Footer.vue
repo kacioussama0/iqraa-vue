@@ -12,7 +12,7 @@ export default {
           link: '/gallery'
         },
         {
-          name: 'School Activity',
+          name: 'Activities',
           link: '/activities'
         },
         {

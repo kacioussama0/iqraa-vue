@@ -4,9 +4,6 @@ import Card from "@/components/Card.vue";
 import {getData} from "@/api";
 import News from "@/components/News.vue";
 
-import "https://code.jquery.com/jquery-1.11.0.min.js";
-import "https://code.jquery.com/jquery-migrate-1.2.1.min.js";
-import "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js";
 
 export default {
   components: {News, Card},
@@ -16,7 +13,29 @@ export default {
     VueProgressbar.start();
 
     this.news = await getData('latest-news');
-
+    $(document).ready(function () {
+      $('.trending-news-slider').slick({
+        infinite: true,
+        arrows: false,
+        rtl: true,
+        dots: false,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        prevArrow:
+            "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+        nextArrow:
+            "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              dots: false,
+              arrows: false
+            }
+          }
+        ]
+      });
+    })
   },
 
   async beforeMount() {
@@ -45,57 +64,31 @@ export default {
     }
   },
 
-   beforeRouteEnter() {
-
-      $(document).ready(function(){
-      $(".trending-news-slider").slick({
-        infinite: true,
-        arrows: false,
-        dots: false,
-        rtl: true,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        prevArrow:
-            "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-        nextArrow:
-            "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              dots: false,
-              arrows: false
-            }
-          }
-        ]
-      });
-    })
-  }
 }
 
 </script>
 
 <template>
 
-  <news :news="news" />
+  <news :news="news"  v-if="news.length" />
 
   <!--    Start Landing Page  -->
 
-  <section class="landing-page py-5 my-5">
+  <section class="landing-page pt-5 ">
 
     <div class="container">
 
-      <div class="row align-items-center">
+      <div class="row align-items-end">
 
-        <div class="col-lg-6 align-items-center rounded-3 my-5 vstack gap-3 justify-content-center align-items-lg-start align-items-center order-last order-lg-first">
+        <div class="col-lg-5 align-items-center rounded-3 my-5 vstack gap-3 justify-content-center align-items-lg-start align-items-center order-last order-lg-first">
           <h2 class="fw-light"><i class="fa-duotone fa-hand-wave fa-1x"></i>{{$t('Welcome')}}</h2>
-          <h1 class="display-4 fw-bold text-primary text-lg-start text-center">{{$t('School')}}</h1>
+          <h1 class="display-3 fw-bold text-primary text-lg-start text-center">{{$t('School')}}</h1>
           <p class="lh-lg text-muted text-lg-start text-center"> أن نكون مدرسة متميزة في تثقيف وحماية الهوية الإسلامية لأبنائنا.<br>  وأن نكون نموذجاً يحتذى به للمدارس العربية في أوروبا.</p>
           <router-link to="/who-we-are" class="btn btn-lg btn-warning rounded-pill px-5 py-2 fw-bold">تعرفوا علينا</router-link>
         </div>
 
-        <div class="col-12 col-lg-6 order-first order-lg-last">
-          <img src="../assets/imgs/landing.jpeg"  alt="landing page" class="rounded-3 img-fluid">
+        <div class="col-12 col-lg-7 order-last order-lg-first d-none d-md-block">
+          <img src="../assets/imgs/landing-bg.webp"  alt="landing page" height="500" class="w-100">
         </div>
 
       </div>
@@ -110,7 +103,7 @@ export default {
 
   <!-- Start Wish The Best -->
 
-  <div class="ad my-5 py-5">
+  <div class="ad mb-5 py-5">
 
     <div class="container">
       <h3 class="text-center display-5 fw-bold text-light">مدرسة جنيف العربية هي الاختيار الأفضل لطفلك</h3>
@@ -154,32 +147,10 @@ export default {
 
   <!--    End Our Modules -->
 
-  <!--    Start Statistics -->
-
-  <section class="statistics  py-5 mb-5 w-100">
-
-    <div class="container">
-
-      <div class="row gy-5">
-
-        <div class="col-sm-6 col-md-3 vstack gap-3 justify-content-center align-items-center text-light" v-for="item in statistics">
-          <i :class="`fa-duotone ${item.icon} fa-4x`"></i>
-          <h4 class="fw-bold"> + <span :data-goal="item.goal" class="number">{{ item.goal }} </span> {{item.name}}</h4>
-        </div>
-
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!--    End Statistics -->
-
 
   <!--    Start Our Features -->
 
-  <section class="our-features  z-n1 position-relative py-5">
+  <section class="our-features  z-n1 position-relative pt-5">
 
 
     <div class="container">
@@ -188,7 +159,7 @@ export default {
 
       <div class="row align-items-center">
 
-        <div class="col-12 col-lg-8 order-1 order-lg-0">
+        <div class="col-12 col-lg-8">
 
           <div class="row ">
 
@@ -217,8 +188,8 @@ export default {
           </div>
 
         </div>
-        <div class="col-lg-4 mb-5">
-          <img src="../assets/imgs/features.jpeg" alt="" class="img-fluid rounded-5">
+        <div class="col-lg-4 order-last  mt-5">
+          <img src="../assets/imgs/goal.webp" alt="" class="img-fluid rounded-5">
         </div>
 
       </div>
@@ -229,6 +200,32 @@ export default {
 
   <!--    End Our Features -->
 
+
+  <!--    Start Statistics -->
+
+  <section class="statistics  py-5 mb-5 w-100">
+
+    <div class="container">
+
+      <div class="row gy-5">
+
+        <div class="col-sm-6 col-md-3 vstack gap-3 justify-content-center align-items-center text-light" v-for="item in statistics">
+          <i :class="`fa-duotone ${item.icon} fa-4x`"></i>
+          <h4 class="fw-bold"> + <span :data-goal="item.goal" class="number">{{ item.goal }} </span> {{item.name}}</h4>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!--    End Statistics -->
+
+
+
+
   <section class="properties py-5">
 
     <div class="container">
@@ -236,7 +233,7 @@ export default {
           <div class="row gy-5 mb-5 align-items-center">
 
             <div class="col-md-6 ">
-              <img src="../assets/imgs/ages.jpeg" alt="" class="img-fluid rounded-5  object-fit-cover" style="width:100%;height: 500px">
+              <img src="../assets/imgs/properties.webp" alt="" class="img-fluid" height="300px">
             </div>
 
             <div class="col-md-6">
@@ -287,12 +284,12 @@ export default {
       <div class="row gy-5">
 
         <div class="col-md-6 col-lg-4 " v-for="post in latestPosts">
-          <card class="border-0 mb-3 rounded-2 overflow-hidden h-100">
+          <card class="border-0 mb-3 rounded-2 overflow-hidden">
             <template v-slot:header>
-              <img :src="`${post.thumbnail}`" class="card-img-top object-fit-cover" alt="..." style="height: 300px">
+              <img :src="`${post.thumbnail}`" class="card-img-top object-fit-cover" alt="..." style="height: 250px">
             </template>
             <template v-slot:body class="vstack gap-4">
-              <h2 class="card-title mb-3 text-truncate fw-bold" style="font-size: 16px;">{{post.title}}</h2>
+              <h2 class="card-title text-truncate fw-bold" style="font-size: 12px;">{{post.title}}</h2>
               <span> <i class="fa-duotone fa-calendar text-primary me-2"></i>تاريخ النشر :  {{post.created_at}}  </span>
               <router-link class="fw-bold stretched-link d-block my-3" :to="`posts/${post.slug}`">إقرأ المزيد</router-link>
             </template>
@@ -332,7 +329,7 @@ export default {
 
 .statistics {
   min-height: 500px;
-  background-image: url("../assets/imgs/landing-4.jpg");
+  background-image: url("../assets/imgs/landing-4.webp");
   background-size: cover;
   background-position: center;
   position: relative;

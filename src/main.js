@@ -9,8 +9,7 @@ import { createApp } from 'vue'
 import {languages} from "@/locale";
 import App from './App.vue';
 import {router} from "@/router.js";
-import "https://code.jquery.com/jquery-1.11.0.min.js";
-import "https://code.jquery.com/jquery-migrate-1.2.1.min.js";
+import "https://code.jquery.com/jquery-3.7.1.min.js";
 import "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js";
 
 

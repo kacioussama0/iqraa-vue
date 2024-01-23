@@ -16,7 +16,7 @@ export default {
         <div class="accordion-item">
           <h2 class="accordion-header">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <h5>من نحن</h5>
+              <h5>التعريف</h5>
             </button>
           </h2>
           <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -99,7 +99,7 @@ export default {
 
       <div class="row align-items-center mb-5 bg-pri">
         <div class="col-md-4">
-          <img src="../assets/imgs/president.jpg" alt="president" class="rounded-5 mb-3 img-fluid" >
+          <img src="../assets/imgs/president.webp" alt="president" class="rounded-5 mb-3 img-fluid" >
         </div>
 
         <div class="col-md-8">

@@ -21,7 +21,7 @@ export default  {
         },
 
         {
-          name: 'School Activity',
+          name: 'Activities',
           link: '/activities'
         },
         {
@@ -66,10 +66,10 @@ export default  {
 
   <!--        Start Navbar    -->
 
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg shadow-sm">
     <div class="container">
       <router-link class="navbar-brand fw-bolder" to="/" >
-        <img src="/logo.svg" alt="" style="width: 100px">
+        <img src="/logo.svg" alt="" style="width: 80px">
       </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa-duotone fa-bars text-primary fa-2x"></i>

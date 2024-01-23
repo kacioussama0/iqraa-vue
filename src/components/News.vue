@@ -21,8 +21,12 @@ export default {
             </div>
             <div class="trending-news-slider">
               <div class="item-single" v-for="latestNews in news">
-                <a href="#">{{latestNews.content}}</a>
+                <a href="#"  dir="rtl">{{latestNews.content}}</a>
               </div>
+
+<!--              <div class="item-single" v-for="news in 10">-->
+<!--                <a href="#">تنطلق تسجيلات عام 2024/2025 يوم 12 سبتمبر في مقر المؤسسة الثقافية جنيف</a>-->
+<!--              </div>-->
             </div>
           </div>
         </div>

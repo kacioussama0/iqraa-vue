@@ -1,16 +1,27 @@
 <script>
+
 import {getData} from "@/api";
 import {VueProgressbar} from "@jambonn/vue-next-progressbar";
 
-import SimpleGallery from "@/components/SimpleGallery.vue";
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
 export default  {
-  components: {SimpleGallery},
 
   created() {
     VueProgressbar.start();
   },
 
   async mounted() {
+
+    if (!this.lightbox) {
+      this.lightbox = new PhotoSwipeLightbox({
+        gallery: '#gallery',
+        children: 'a',
+        pswpModule: () => import('photoswipe'),
+      });
+      this.lightbox.init();
+    }
+
     document.title = 'مدرسة إقرأ جنيف | الصور';
     const slug = this.$route.params.category;
       this.photos = await getData(`categories/${slug}/images`);
@@ -22,19 +33,38 @@ export default  {
     }
   },
 
+  unmounted() {
+    if (this.lightbox) {
+      this.lightbox.destroy();
+      this.lightbox = null;
+    }
+  },
+
 }
 </script>
 
 <template>
-  <div class="container my-5">
-
-
-
+  <div id="gallery" class="container my-5">
     <div class="row gy-5 g-lg-5">
-      <div class="col-12 col-md-4" v-for="photo in photos">
-          <img :src="photo.path" class="rounded-3 w-100 category-images" alt="...">
+
+      <div class="col-12 col-md-4 " v-for="(image, key) in photos">
+        <a
+            :key="key"
+            :href="image.path"
+            :data-pswp-width="image.width"
+            :data-pswp-height="image.height"
+            target="_blank"
+            rel="noreferrer"
+        >
+
+        <img :src="image.path" alt=""  class="w-100 rounded-3 category-images" loading="lazy"/>
+
+        </a>
       </div>
+
     </div>
+
+
   </div>
 </template>
 
